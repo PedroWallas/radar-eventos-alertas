@@ -121,5 +121,18 @@ SAO_PAULO = [
 # Notícias que não interessam
 EXCLUIR = [
     "morre", "morte", "assassin", "assalto", "preso", "policia", "acidente",
-    "horoscopo", "receita de",
+    "horoscopo", "receita de", " ato ", "manifestacao", "protesto", "bolsonaro",
+    " lula ", "sem brasil", "super bowl", "eleicao", "candidato", "emociona",
+    "arrasta", "relembre", "como foi", "como assistir", "saiba como assistir", "review",
+    "o que esperar", "setlist", " da show ", " deu show ", "dicas para",
+]
+# Entidades do setor que valem alerta mesmo sem citar São Paulo
+HOTELARIA_NACIONAL = ["abav", "equipotel", "fohb", "abih", "wtm", "conotel", "embratur"]
+
+# Para um show comum virar alerta no celular, a manchete precisa ser de anúncio.
+# Os demais ficam só registrados (o Claude revisa no Radar).
+ANUNCIO = [
+    "anuncia", "confirma", "data extra", "show extra", "nova data", "ingressos",
+    "pre-venda", "venda geral", "turne", "line-up", "lineup", "atracoes", "vem ao brasil",
+    "volta ao brasil", "retorno ao brasil", "primeiro show", "show unico", "adiad", "cancel",
 ]

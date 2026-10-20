@@ -28,7 +28,7 @@ from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 
 from buscas import (BUSCAS, COMERCIAL, CRITICO, EVENTO, EXCLUIR,
-                    GRANDES_LOCAIS, HOTELARIA, SAO_PAULO)
+                    GRANDES_LOCAIS, HOTELARIA, HOTELARIA_NACIONAL, SAO_PAULO, ANUNCIO)
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 ESTADO = os.path.join(AQUI, "estado")
@@ -89,6 +89,16 @@ def buscar(consulta):
     return itens
 
 
+def palavras(titulo):
+    return {w for w in chave(titulo).split() if len(w) > 3}
+
+
+def parecido(a, b):
+    if not a or not b:
+        return False
+    return len(a & b) / len(a | b) >= 0.3
+
+
 def tem(texto, lista):
     return any(p in texto for p in lista)
 
@@ -98,10 +108,11 @@ def classificar(item):
     td = norm(item["titulo"] + " " + item.get("desc", ""))
     if tem(t, EXCLUIR):
         return None
-    hot = tem(t, HOTELARIA)
-    no_brasil = tem(t, [" brasil ", " brazil ", " pais "]) and tem(t, EVENTO)
+    em_sp = tem(td, SAO_PAULO)
+    hot = tem(t, HOTELARIA) and (em_sp or tem(t, HOTELARIA_NACIONAL))
+    no_brasil = tem(t, [" no brasil ", " ao brasil ", " pelo brasil ", " shows no pais "]) and tem(t, EVENTO)
     especifica = item.get("grupo") in ("b", "c")  # busca já é de um evento/feira específico
-    if not tem(td, SAO_PAULO) and not hot and not no_brasil and not especifica:
+    if not em_sp and not hot and not no_brasil and not especifica:
         return None
     if tem(t, CRITICO) or ("paulista" in t and ("show" in t or "mega" in t) and ("gratuit" in t or "prefeitura" in t or "nunes" in t)):
         return ("CRITICO", "🚨 MEGASHOW / PAULISTA")
@@ -112,11 +123,13 @@ def classificar(item):
     if tem(t, COMERCIAL):
         return ("COMERCIAL", "💼 Feira / congresso")
     if tem(t, EVENTO):
-        return ("EVENTO", "🎫 Show / festival / esporte")
+        if tem(t, ANUNCIO):
+            return ("EVENTO", "🎫 Show / festival / esporte")
+        return ("REGISTRO", "Registro (sem aviso)")
     return None
 
 
-ORDEM = ["CRITICO", "COMERCIAL+", "ALTO", "COMERCIAL", "EVENTO"]
+ORDEM = ["CRITICO", "COMERCIAL+", "ALTO", "COMERCIAL", "EVENTO", "REGISTRO"]
 
 
 def _get(url, data=None):
@@ -197,7 +210,7 @@ def montar_mensagens(novos):
     for n in [x for x in novos if x["prioridade"] == "CRITICO"]:
         msgs.append(f"🚨 *RADAR APÊ · ALERTA CRÍTICO* ({agora})\n\n*{n['titulo']}*\n{n['fonte']}\n{n['link']}\n\n"
                     "Se houver data: criar regra de proteção no Climber agora.")
-    resto = [x for x in novos if x["prioridade"] != "CRITICO"]
+    resto = [x for x in novos if x["prioridade"] not in ("CRITICO", "REGISTRO")]
     resto.sort(key=lambda x: ORDEM.index(x["prioridade"]))
     for i in range(0, len(resto), MAX_POR_MENSAGEM):
         bloco = resto[i:i + MAX_POR_MENSAGEM]
@@ -222,6 +235,7 @@ def main():
     consultas = BUSCAS["sempre"] + BUSCAS[grupo]
     limite = datetime.now(timezone.utc) - timedelta(hours=JANELA_H)
     novos, erros = [], 0
+    recentes = [palavras(a["titulo"]) for a in alertas[-300:]]
     grupo_de = {c: g for g, lista in BUSCAS.items() for c in lista}
     for c in consultas:
         try:
@@ -243,6 +257,10 @@ def main():
             cl = classificar(it)
             if not cl:
                 continue
+            pw = palavras(it["titulo"])
+            if any(parecido(pw, r) for r in recentes):
+                continue  # mesma notícia em outro site
+            recentes.append(pw)
             novos.append({
                 "id": k[:80], "titulo": re.sub(r"\s+-\s+[^-]+$", "", it["titulo"]),
                 "fonte": it["fonte"], "link": it["link"],
@@ -263,7 +281,8 @@ def main():
             n["enviado"] = False
         alertas.extend(novos)
     elif novos:
-        ok = all(enviar(m) for m in montar_mensagens(novos))
+        msgs = montar_mensagens(novos)
+        ok = all(enviar(m) for m in msgs) if msgs else True
         for n in novos:
             n["enviado"] = ok
         alertas.extend(novos)
