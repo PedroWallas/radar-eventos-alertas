@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "*/10 * * * *"   # a cada 10 minutos, 24h por dia (horário UTC)
   workflow_dispatch: {}       # botão "Run workflow" para rodar na hora
+  push:
+    branches: [main]
+    paths: [".github/workflows/**", "monitor.py", "buscas.py"]  # roda na hora quando o código muda
 
 permissions:
   contents: write
@@ -27,7 +30,7 @@ jobs:
           CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC || 'radar-ape-pedro-7391' }}
         run: python monitor.py
       - name: Salvar o que já foi visto
         run: |
