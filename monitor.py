@@ -1,0 +1,265 @@
+"""Radar de Eventos · monitor 24h
+
+Busca notícias de eventos em São Paulo no Google Notícias, classifica por
+prioridade e manda os novos para o WhatsApp pelo CallMeBot. Guarda o que já
+viu em estado/vistos.json e registra todos os alertas em estado/alertas.json
+(esse arquivo é lido pelo Claude para atualizar o Radar no claude.ai).
+
+Variáveis de ambiente (segredos do GitHub). Configure pelo menos um canal:
+  CALLMEBOT_PHONE   seu número com DDI e DDD, só dígitos (ex.: 5511999999999)
+  CALLMEBOT_APIKEY  a chave que o CallMeBot mandou no seu WhatsApp
+  TELEGRAM_TOKEN    token do bot criado no @BotFather
+  TELEGRAM_CHAT_ID  seu id de chat no Telegram
+Opcionais:
+  MODO_TESTE=1      não envia nada, só imprime
+  GRUPO=a|b|c       força um grupo de buscas (padrão: reveza pelo minuto)
+"""
+import json
+import os
+import re
+import sys
+import time
+import unicodedata
+import urllib.parse
+import urllib.request
+import xml.etree.ElementTree as ET
+from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
+
+from buscas import (BUSCAS, COMERCIAL, CRITICO, EVENTO, EXCLUIR,
+                    GRANDES_LOCAIS, HOTELARIA, SAO_PAULO)
+
+AQUI = os.path.dirname(os.path.abspath(__file__))
+ESTADO = os.path.join(AQUI, "estado")
+VISTOS = os.path.join(ESTADO, "vistos.json")
+ALERTAS = os.path.join(ESTADO, "alertas.json")
+SP_TZ = timezone(timedelta(hours=-3))
+JANELA_H = 48           # só notícias publicadas nas últimas 48 horas
+MAX_VISTOS = 5000
+MAX_ALERTAS = 1500
+MAX_POR_MENSAGEM = 8
+UA = "Mozilla/5.0 (RadarEventosApe/1.0; +https://github.com)"
+TESTE = os.environ.get("MODO_TESTE") == "1"
+
+
+def norm(t):
+    t = unicodedata.normalize("NFKD", t or "").encode("ascii", "ignore").decode()
+    return " " + re.sub(r"\s+", " ", t.lower()) + " "
+
+
+def chave(titulo):
+    t = re.sub(r"\s+-\s+[^-]+$", "", titulo or "")  # tira " - Nome da fonte"
+    t = norm(t)
+    t = re.sub(r"[^a-z0-9 ]", " ", t)
+    return re.sub(r"\s+", " ", t).strip()[:140]
+
+
+def carregar(caminho, padrao):
+    try:
+        with open(caminho, encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return padrao
+
+
+def salvar(caminho, dados):
+    os.makedirs(os.path.dirname(caminho), exist_ok=True)
+    with open(caminho, "w", encoding="utf-8") as f:
+        json.dump(dados, f, ensure_ascii=False, indent=1)
+
+
+def buscar(consulta):
+    q = urllib.parse.quote(f"{consulta} when:2d")
+    url = f"https://news.google.com/rss/search?q={q}&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=20) as r:
+        raiz = ET.fromstring(r.read())
+    itens = []
+    for it in raiz.iter("item"):
+        titulo = (it.findtext("title") or "").strip()
+        link = (it.findtext("link") or "").strip()
+        fonte = (it.findtext("source") or "").strip()
+        desc = re.sub(r"<[^>]+>", " ", it.findtext("description") or "")
+        try:
+            pub = parsedate_to_datetime(it.findtext("pubDate"))
+        except (TypeError, ValueError):
+            pub = None
+        itens.append({"titulo": titulo, "link": link, "fonte": fonte, "pub": pub, "busca": consulta, "desc": desc})
+    return itens
+
+
+def tem(texto, lista):
+    return any(p in texto for p in lista)
+
+
+def classificar(item):
+    t = norm(item["titulo"])
+    td = norm(item["titulo"] + " " + item.get("desc", ""))
+    if tem(t, EXCLUIR):
+        return None
+    hot = tem(t, HOTELARIA)
+    no_brasil = tem(t, [" brasil ", " brazil ", " pais "]) and tem(t, EVENTO)
+    especifica = item.get("grupo") in ("b", "c")  # busca já é de um evento/feira específico
+    if not tem(td, SAO_PAULO) and not hot and not no_brasil and not especifica:
+        return None
+    if tem(t, CRITICO) or ("paulista" in t and ("show" in t or "mega" in t) and ("gratuit" in t or "prefeitura" in t or "nunes" in t)):
+        return ("CRITICO", "🚨 MEGASHOW / PAULISTA")
+    if hot:
+        return ("COMERCIAL+", "🏨 Hotelaria / turismo (prioridade comercial)")
+    if tem(t, GRANDES_LOCAIS) and tem(t, EVENTO):
+        return ("ALTO", "🎤 Grande evento em estádio ou autódromo")
+    if tem(t, COMERCIAL):
+        return ("COMERCIAL", "💼 Feira / congresso")
+    if tem(t, EVENTO):
+        return ("EVENTO", "🎫 Show / festival / esporte")
+    return None
+
+
+ORDEM = ["CRITICO", "COMERCIAL+", "ALTO", "COMERCIAL", "EVENTO"]
+
+
+def _get(url, data=None):
+    req = urllib.request.Request(url, data=data, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return r.status, r.read().decode("utf-8", "ignore")
+
+
+def _whatsapp(texto):
+    phone = os.environ.get("CALLMEBOT_PHONE", "").strip()
+    key = os.environ.get("CALLMEBOT_APIKEY", "").strip()
+    if not phone or not key:
+        return None
+    url = ("https://api.callmebot.com/whatsapp.php?phone=" + urllib.parse.quote(phone)
+           + "&text=" + urllib.parse.quote(texto) + "&apikey=" + urllib.parse.quote(key))
+    st, corpo = _get(url)
+    return st == 200 and "error" not in corpo.lower()[:300]
+
+
+def _telegram(texto):
+    token = os.environ.get("TELEGRAM_TOKEN", "").strip()
+    chat = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+    if not token or not chat:
+        return None
+    dados = urllib.parse.urlencode({"chat_id": chat, "text": texto.replace("*", ""),
+                                    "disable_web_page_preview": "true"}).encode()
+    st, corpo = _get(f"https://api.telegram.org/bot{token}/sendMessage", dados)
+    return st == 200 and '"ok":true' in corpo
+
+
+def enviar(texto):
+    """Envia por todos os canais configurados (WhatsApp e/ou Telegram)."""
+    if TESTE:
+        print("----- MENSAGEM (teste) -----\n" + texto + "\n----------------------------")
+        return True
+    algum, ok_total = False, True
+    for nome, canal in (("WhatsApp", _whatsapp), ("Telegram", _telegram)):
+        for tentativa in range(3):
+            try:
+                r = canal(texto)
+            except Exception as e:  # noqa: BLE001
+                print(f"{nome}: erro ao enviar: {e}")
+                r = False
+            if r is None:
+                break
+            algum = True
+            if r:
+                break
+            time.sleep(8 * (tentativa + 1))
+        else:
+            ok_total = False
+            print(f"{nome}: mensagem não enviada após 3 tentativas.")
+        if r is not None:
+            time.sleep(3)
+    if not algum:
+        print("Nenhum canal configurado (CallMeBot ou Telegram): mensagem não enviada.")
+        return False
+    return ok_total
+
+
+def montar_mensagens(novos):
+    agora = datetime.now(SP_TZ).strftime("%d/%m %H:%M")
+    msgs = []
+    for n in [x for x in novos if x["prioridade"] == "CRITICO"]:
+        msgs.append(f"🚨 *RADAR APÊ · ALERTA CRÍTICO* ({agora})\n\n*{n['titulo']}*\n{n['fonte']}\n{n['link']}\n\n"
+                    "Se houver data: criar regra de proteção no Climber agora.")
+    resto = [x for x in novos if x["prioridade"] != "CRITICO"]
+    resto.sort(key=lambda x: ORDEM.index(x["prioridade"]))
+    for i in range(0, len(resto), MAX_POR_MENSAGEM):
+        bloco = resto[i:i + MAX_POR_MENSAGEM]
+        linhas = [f"📡 *Radar de Eventos Apê* ({agora}) · {len(resto)} novidade(s)"]
+        grupo = None
+        for n in bloco:
+            if n["rotulo"] != grupo:
+                grupo = n["rotulo"]
+                linhas.append(f"\n*{grupo}*")
+            linhas.append(f"• {n['titulo']}\n  {n['link']}")
+        msgs.append("\n".join(linhas))
+    return msgs
+
+
+def main():
+    vistos = carregar(VISTOS, {"chaves": [], "iniciado": False})
+    alertas = carregar(ALERTAS, [])
+    conhecidas = set(vistos["chaves"])
+    primeira = not vistos.get("iniciado")
+
+    grupo = os.environ.get("GRUPO") or ["a", "b", "c"][(int(time.time() // 600)) % 3]
+    consultas = BUSCAS["sempre"] + BUSCAS[grupo]
+    limite = datetime.now(timezone.utc) - timedelta(hours=JANELA_H)
+    novos, erros = [], 0
+    grupo_de = {c: g for g, lista in BUSCAS.items() for c in lista}
+    for c in consultas:
+        try:
+            itens = buscar(c)
+            for it in itens:
+                it["grupo"] = grupo_de.get(c)
+        except Exception as e:  # noqa: BLE001
+            erros += 1
+            print(f"Falha na busca '{c}': {e}")
+            continue
+        for it in itens:
+            if it["pub"] and it["pub"] < limite:
+                continue
+            k = chave(it["titulo"])
+            if not k or k in conhecidas:
+                continue
+            conhecidas.add(k)
+            vistos["chaves"].append(k)
+            cl = classificar(it)
+            if not cl:
+                continue
+            novos.append({
+                "id": k[:80], "titulo": re.sub(r"\s+-\s+[^-]+$", "", it["titulo"]),
+                "fonte": it["fonte"], "link": it["link"],
+                "publicado": it["pub"].isoformat() if it["pub"] else None,
+                "prioridade": cl[0], "rotulo": cl[1], "busca": it["busca"],
+                "detectadoEm": datetime.now(timezone.utc).isoformat(),
+            })
+        time.sleep(1.2)
+
+    print(f"Grupo {grupo}: {len(consultas)} buscas, {erros} falhas, {len(novos)} novidades relevantes.")
+    if primeira and not TESTE:
+        enviar("✅ *Radar de Eventos Apê ativado.* A partir de agora você recebe aqui os anúncios novos de "
+               "shows, feiras e eventos em São Paulo, 24 horas por dia. Alertas do megashow da Paulista chegam na hora.")
+        vistos["iniciado"] = True
+        for n in novos:
+            n["enviado"] = False
+        alertas.extend(novos)
+    elif novos:
+        ok = all(enviar(m) for m in montar_mensagens(novos))
+        for n in novos:
+            n["enviado"] = ok
+        alertas.extend(novos)
+        if not ok:
+            print("Atenção: alguma mensagem não foi enviada.")
+
+    vistos["chaves"] = vistos["chaves"][-MAX_VISTOS:]
+    vistos["ultimaExecucao"] = datetime.now(timezone.utc).isoformat()
+    salvar(VISTOS, vistos)
+    salvar(ALERTAS, alertas[-MAX_ALERTAS:])
+    if erros == len(consultas):
+        sys.exit("Todas as buscas falharam.")
+
+
+if __name__ == "__main__":
+    main()
