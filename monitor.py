@@ -254,9 +254,11 @@ def main():
 
     print(f"Grupo {grupo}: {len(consultas)} buscas, {erros} falhas, {len(novos)} novidades relevantes.")
     if primeira and not TESTE:
-        enviar("✅ *Radar de Eventos Apê ativado.* A partir de agora você recebe aqui os anúncios novos de "
-               "shows, feiras e eventos em São Paulo, 24 horas por dia. Alertas do megashow da Paulista chegam na hora.")
-        vistos["iniciado"] = True
+        # Enquanto nenhum canal estiver configurado, só registra (o Claude usa o registro no Radar).
+        # Quando o primeiro aviso sair, marca como iniciado e passa a mandar as novidades.
+        if enviar("✅ *Radar de Eventos Apê ativado.* A partir de agora você recebe aqui os anúncios novos de "
+                  "shows, feiras e eventos em São Paulo, 24 horas por dia. Alertas do megashow da Paulista chegam na hora."):
+            vistos["iniciado"] = True
         for n in novos:
             n["enviado"] = False
         alertas.extend(novos)
