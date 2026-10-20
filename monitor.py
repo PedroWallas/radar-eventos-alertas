@@ -10,6 +10,7 @@ Variáveis de ambiente (segredos do GitHub). Configure pelo menos um canal:
   CALLMEBOT_APIKEY  a chave que o CallMeBot mandou no seu WhatsApp
   TELEGRAM_TOKEN    token do bot criado no @BotFather
   TELEGRAM_CHAT_ID  seu id de chat no Telegram
+  NTFY_TOPIC        nome do tópico no app ntfy (notificação no celular, grátis)
 Opcionais:
   MODO_TESTE=1      não envia nada, só imprime
   GRUPO=a|b|c       força um grupo de buscas (padrão: reveza pelo minuto)
@@ -146,13 +147,27 @@ def _telegram(texto):
     return st == 200 and '"ok":true' in corpo
 
 
+def _ntfy(texto):
+    topico = os.environ.get("NTFY_TOPIC", "").strip()
+    if not topico:
+        return None
+    critico = "ALERTA CRÍTICO" in texto
+    titulo = "Radar Apê · ALERTA CRÍTICO" if critico else "Radar de Eventos Apê"
+    req = urllib.request.Request(
+        "https://ntfy.sh/" + urllib.parse.quote(topico), data=texto.replace("*", "").encode("utf-8"),
+        headers={"User-Agent": UA, "Title": titulo.encode("utf-8").decode("latin-1", "ignore"),
+                 "Priority": "urgent" if critico else "default", "Tags": "rotating_light" if critico else "calendar"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return r.status == 200
+
+
 def enviar(texto):
     """Envia por todos os canais configurados (WhatsApp e/ou Telegram)."""
     if TESTE:
         print("----- MENSAGEM (teste) -----\n" + texto + "\n----------------------------")
         return True
     algum, ok_total = False, True
-    for nome, canal in (("WhatsApp", _whatsapp), ("Telegram", _telegram)):
+    for nome, canal in (("WhatsApp", _whatsapp), ("Telegram", _telegram), ("ntfy", _ntfy)):
         for tentativa in range(3):
             try:
                 r = canal(texto)
@@ -171,7 +186,7 @@ def enviar(texto):
         if r is not None:
             time.sleep(3)
     if not algum:
-        print("Nenhum canal configurado (CallMeBot ou Telegram): mensagem não enviada.")
+        print("Nenhum canal configurado (CallMeBot, Telegram ou ntfy): mensagem não enviada.")
         return False
     return ok_total
 
