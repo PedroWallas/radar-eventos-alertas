@@ -11,7 +11,7 @@ on:
         default: false
   push:
     branches: [main]
-    paths: [".github/workflows/**", "monitor.py", "buscas.py"]  # roda na hora quando o código muda
+    paths: [".github/workflows/radar.yml", "monitor.py", "buscas.py", "fontes.py"]  # roda na hora quando o código muda
 
 permissions:
   contents: write
@@ -41,6 +41,7 @@ jobs:
           GREENAPI_TOKEN: ${{ secrets.GREENAPI_TOKEN }}
           WHATSAPP_TO: ${{ secrets.WHATSAPP_TO }}
           ENVIAR_TESTE: ${{ inputs.teste && '1' || '' }}
+          FONTES: ${{ github.event_name != 'schedule' && '1' || '' }}
         run: python monitor.py
       - name: Salvar o que já foi visto
         run: |

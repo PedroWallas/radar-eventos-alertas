@@ -10,6 +10,21 @@ as novidades para o seu WhatsApp (CallMeBot) e/ou Telegram.
 - Não repete notícia: o que já foi visto fica em `estado/vistos.json`.
 - Todo alerta fica registrado em `estado/alertas.json`. O Claude lê esse arquivo 4 vezes por dia e transforma as novidades em cards e notícias no Radar de Eventos.
 
+## Fontes oficiais (agendas)
+
+A cada ~30 minutos o monitor também lê as agendas oficiais listadas em `fontes.py` e avisa quando aparece um evento novo:
+
+| Fonte | Aviso no celular |
+|---|---|
+| Live Nation Brasil (links para a Ticketmaster) | sim |
+| Move Concerts (só eventos em locais grandes de SP) | sim |
+| Expo Center Norte (feiras e congressos) | sim |
+| Pro Magno Centro de Eventos | sim |
+| Autódromo de Interlagos (agenda da Prefeitura) | sim, sem track days e cursos |
+| Suhai Music Hall, Tokio Marine Hall, Ticket360, Uhuu, Clube do Ingresso (só locais grandes de SP) | não, só registro para o Claude |
+
+Ticketmaster, Eventim, Allianz Parque, Distrito Anhembi e São Paulo Expo bloqueiam leitura automática ou carregam a agenda por JavaScript: ficam na checagem manual da aba **Fontes** do Radar. Na primeira leitura de cada fonte o monitor só guarda a lista atual (não avisa). O que já foi visto fica em `estado/fontes_vistos.json`. Para testar a leitura de todas as fontes: Actions → Testar fontes oficiais → Run workflow.
+
 ## Como funciona cada execução
 
 1. Roda as 8 buscas do grupo **sempre** (megashow e anúncios de shows em SP) e um dos grupos **a** (shows e casas), **b** (feiras, congressos, esportes) ou **c** (hotelaria, turismo, cidade), que se revezam. Cada busca roda pelo menos a cada 30 minutos.

@@ -29,16 +29,12 @@ LOCAIS_SP = [
 FONTES = [
     {"id": "livenation", "nome": "Live Nation Brasil", "url": "https://www.livenation.com.br/",
      "padrao": r"ticketmaster\.com\.br/event/[a-z0-9-]+", "alerta": True},
-    {"id": "livenation-todos", "nome": "Live Nation Brasil (todos os eventos)", "url": "https://www.livenation.com.br/event/allevents",
-     "padrao": r"ticketmaster\.com\.br/event/[a-z0-9-]+", "alerta": True, "grupo": "livenation"},
     {"id": "move", "nome": "Move Concerts", "url": "https://moveconcerts.com/pt/agenda/",
      "padrao": r"livepass\.com\.br/event/[a-z0-9-]+", "alerta": True, "so_sp": True},
     {"id": "expocenternorte", "nome": "Expo Center Norte", "url": "https://www.expocenternorte.com.br/eventos",
      "padrao": r"/eventos/[a-z0-9-]{4,}", "alerta": True},
     {"id": "promagno", "nome": "Pro Magno Centro de Eventos", "url": "https://www.promagno.com.br/centro-de-eventos/agenda/",
-     "padrao": r"promagno\.com\.br/evento/[a-z0-9-]+", "alerta": True, "ignorar": r"evento-corporativo-privado"},
-    {"id": "transamerica", "nome": "Transamerica Expo Center", "url": "https://www.transamericaexpo.com.br/eventos/",
-     "padrao": r"transamericaexpo\.com\.br/(?:eventos?|agenda)/[a-z0-9-]{4,}", "alerta": True},
+     "padrao": r"promagno\.com\.br/evento/[a-z0-9-]+", "alerta": True, "ignorar": r"evento-(?:corporativo|social)-privado"},
     {"id": "interlagos", "nome": "Autódromo de Interlagos (agenda oficial)", "url": "https://prefeitura.sp.gov.br/web/autodromodeinterlagos/agenda",
      "tipo": "texto_datas", "alerta": True,
      "ignorar": r"track day|escola de pilotagem|cl[ií]nica|curso|treino livre|alpie|2drive"},
@@ -48,10 +44,8 @@ FONTES = [
      "padrao": r"ticketmaster\.com\.br/event/[A-Za-z0-9_-]+", "alerta": False},
     {"id": "ticket360", "nome": "Ticket360", "url": "https://www.ticket360.com.br/",
      "padrao": r"/evento/\d+/[a-z0-9-]+", "alerta": False, "so_sp": True},
-    {"id": "sympla-sp", "nome": "Sympla (São Paulo)", "url": "https://www.sympla.com.br/eventos/sao-paulo-sp",
-     "padrao": r"(?:bileto\.)?sympla\.com\.br/(?:evento|event)/[a-z0-9/-]+", "alerta": False, "so_sp": True},
     {"id": "uhuu-sp", "nome": "Uhuu (São Paulo)", "url": "https://www.uhuu.com/",
-     "padrao": r"uhuu\.com/evento/sp/sao-paulo/[a-z0-9-]+", "alerta": False},
+     "padrao": r"uhuu\.com/evento/sp/sao-paulo/[a-z0-9-]+", "alerta": False, "so_sp": True},
     {"id": "clubedoingresso", "nome": "Clube do Ingresso", "url": "https://www.clubedoingresso.com/",
      "padrao": r"/evento/[a-z0-9-]+", "alerta": False, "so_sp": True},
 ]
@@ -100,7 +94,10 @@ def extrair_links(f, html):
         if f.get("ignorar") and re.search(f["ignorar"], link + " " + inner, re.I):
             continue
         nome = _texto(inner)
-        if len(nome) < 3 or nome.lower() in ("comprar", "ingressos", "saiba mais", "ver mais", "comprar ingresso", "mais informações"):
+        nome = re.sub(r"\s*(GARANTA J[ÁA] SEU INGRESSO|SAIBA MAIS|COMPRE AGORA|Vendas? [Dd]ispon[íi]veis)\s*", " ", nome).strip()
+        if len(nome) > 90:
+            nome = nome[:90].rsplit(" ", 1)[0] + "…"
+        if len(nome) < 3 or nome.lower() in ("comprar", "ingressos", "saiba mais", "ver mais", "comprar ingresso", "mais informações", "tickets", "ingresso"):
             nome = _slug_nome(link)
         chave = re.sub(r"https?://(www\.)?", "", link).rstrip("/").lower()
         if chave not in itens or len(nome) > len(itens[chave]["nome"]):

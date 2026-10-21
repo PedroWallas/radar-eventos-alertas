@@ -144,7 +144,7 @@ def classificar(item):
     return None
 
 
-ORDEM = ["CRITICO", "COMERCIAL+", "ALTO", "COMERCIAL", "EVENTO", "REGISTRO"]
+ORDEM = ["CRITICO", "FONTE", "COMERCIAL+", "ALTO", "COMERCIAL", "EVENTO", "REGISTRO"]
 
 
 def _get(url, data=None):
@@ -300,6 +300,19 @@ def main():
         time.sleep(1.2)
 
     print(f"Grupo {grupo}: {len(consultas)} buscas, {erros} falhas, {len(novos)} novidades relevantes.")
+    # Fontes oficiais (agendas de produtoras, casas, pavilhões e Interlagos): a cada ~30 min
+    if os.environ.get("FONTES") == "1" or int(time.time() // 600) % 3 == 0:
+        try:
+            import fontes
+            agora_iso = datetime.now(timezone.utc).isoformat()
+            f_alerta, f_reg, rel = fontes.checar(os.path.join(AQUI, "estado", "fontes_vistos.json"), alertas, agora_iso)
+            for r in rel:
+                print("Fonte", r.get("fonte"), r.get("itens", ""), r.get("erro", ""))
+            print(f"Fontes oficiais: {len(f_alerta)} novas com aviso, {len(f_reg)} só registro.")
+            novos.extend(f_alerta)
+            alertas.extend(dict(x, enviado=False) for x in f_reg)
+        except Exception as e:  # noqa: BLE001
+            print(f"Fontes oficiais: falhou ({e})")
     if os.environ.get("ENVIAR_TESTE") == "1":
         enviar("✅ *Teste do Radar de Eventos Apê.* Se você recebeu esta mensagem, este canal está funcionando.")
     if primeira and not TESTE:
