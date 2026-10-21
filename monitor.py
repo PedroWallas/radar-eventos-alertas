@@ -31,8 +31,8 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 
-from buscas import (BUSCAS, COMERCIAL, CRITICO, EVENTO, EXCLUIR,
-                    GRANDES_LOCAIS, HOTELARIA, HOTELARIA_NACIONAL, SAO_PAULO, ANUNCIO)
+from buscas import (BUSCAS, COMERCIAL, CRITICO, EVENTO, EXCLUIR, PAVILHOES, EVENTOS_SP, DEMANDA, OUTRO_LUGAR, NOVIDADE,
+                    GRANDES_LOCAIS, HOTELARIA, SAO_PAULO, ANUNCIO)
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 ESTADO = os.path.join(AQUI, "estado")
@@ -108,27 +108,38 @@ def tem(texto, lista):
 
 
 def classificar(item):
-    t = norm(item["titulo"])
-    td = norm(item["titulo"] + " " + item.get("desc", ""))
+    """Decide se a notícia vai para o celular e com qual prioridade.
+
+    Só vai para o celular o que mexe na demanda em São Paulo/Santos:
+    megashow, show ou festival anunciado em casa grande, feira ou congresso em
+    pavilhão, eventos que o Radar já acompanha e notícias de ocupação hoteleira
+    na cidade. O resto vira REGISTRO (fica no arquivo para o Claude) ou é descartado.
+    """
+    t = " " + norm(item["titulo"]) + " "
     if tem(t, EXCLUIR):
         return None
-    em_sp = tem(td, SAO_PAULO)
-    hot = tem(t, HOTELARIA) and (em_sp or tem(t, HOTELARIA_NACIONAL))
-    no_brasil = tem(t, [" no brasil ", " ao brasil ", " pelo brasil ", " shows no pais "]) and tem(t, EVENTO)
-    especifica = item.get("grupo") in ("b", "c")  # busca já é de um evento/feira específico
-    if not em_sp and not hot and not no_brasil and not especifica:
+    em_sp = tem(t, SAO_PAULO)
+    fora = tem(t, OUTRO_LUGAR) and not em_sp
+    if fora:
         return None
     if tem(t, CRITICO) or ("paulista" in t and ("show" in t or "mega" in t) and ("gratuit" in t or "prefeitura" in t or "nunes" in t)):
         return ("CRITICO", "🚨 MEGASHOW / PAULISTA")
-    if hot:
-        return ("COMERCIAL+", "🏨 Hotelaria / turismo (prioridade comercial)")
-    if tem(t, GRANDES_LOCAIS) and tem(t, EVENTO):
-        return ("ALTO", "🎤 Grande evento em estádio ou autódromo")
-    if tem(t, COMERCIAL):
-        return ("COMERCIAL", "💼 Feira / congresso")
-    if tem(t, EVENTO):
-        if tem(t, ANUNCIO):
-            return ("EVENTO", "🎫 Show / festival / esporte")
+    conhecido = tem(t, EVENTOS_SP)
+    if tem(t, HOTELARIA) and tem(t, DEMANDA) and em_sp:
+        return ("COMERCIAL+", "🏨 Hotelaria em SP: ocupação e demanda")
+    if tem(t, ["movimentar", "impacto economico"]) and em_sp:
+        return ("COMERCIAL+", "🏨 Hotelaria em SP: ocupação e demanda")
+    if tem(t, EVENTO) and tem(t, ANUNCIO) and (tem(t, GRANDES_LOCAIS) or conhecido):
+        return ("ALTO", "🎤 Grande evento anunciado")
+    if tem(t, COMERCIAL) and (tem(t, PAVILHOES) or (conhecido and tem(t, NOVIDADE))):
+        return ("COMERCIAL", "💼 Feira / congresso em SP")
+    if conhecido and tem(t, NOVIDADE):
+        return ("EVENTO", "🎫 Evento acompanhado pelo Radar")
+    if em_sp and tem(t, EVENTO) and tem(t, ["pre-venda", "venda geral", "data extra", "show extra", "nova data", "adiad", "cancel"]):
+        return ("EVENTO", "🎫 Venda, data extra ou mudança de data em SP")
+    if em_sp and tem(t, EVENTO) and tem(t, ANUNCIO) and tem(t, [" no brasil", " ao brasil", "show unico", "unico show", "pela primeira vez"]):
+        return ("EVENTO", "🎫 Show internacional em SP")
+    if em_sp and (tem(t, EVENTO) or tem(t, COMERCIAL)):
         return ("REGISTRO", "Registro (sem aviso)")
     return None
 

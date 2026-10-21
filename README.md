@@ -13,7 +13,7 @@ as novidades para o seu WhatsApp (CallMeBot) e/ou Telegram.
 ## Como funciona cada execução
 
 1. Roda as 8 buscas do grupo **sempre** (megashow e anúncios de shows em SP) e um dos grupos **a** (shows e casas), **b** (feiras, congressos, esportes) ou **c** (hotelaria, turismo, cidade), que se revezam. Cada busca roda pelo menos a cada 30 minutos.
-2. Fica só com notícias das últimas 48 horas que citam São Paulo (ou que vieram de uma busca específica de feira) e descarta crimes, acidentes etc.
+2. Fica só com notícias das últimas 48 horas e aplica o filtro de relevância: vai para o celular só o que mexe na demanda em São Paulo e Santos (megashow; show anunciado em estádio, arena ou grande casa; pré-venda, data extra ou adiamento em SP; feira ou congresso em pavilhão; eventos que o Radar já acompanha, como The Town, Lolla, CCXP, Parada e F1; notícias de ocupação hoteleira e impacto econômico em SP). Notícia de outra cidade, política do setor, prêmio, promoção de hotel, vaga de emprego e resenha de show é descartada. Shows menores em SP ficam só registrados (sem aviso). As listas de palavras estão em `buscas.py`.
 3. Manda uma mensagem por alerta crítico e um resumo agrupado para o resto (até 8 por mensagem).
 
 Para incluir ou tirar buscas, edite `buscas.py`. Cada linha é uma busca.

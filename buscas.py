@@ -98,50 +98,92 @@ BUSCAS = {
 }
 
 # Palavras que definem a prioridade do alerta (minúsculas, sem acento).
+# Regra geral: só vai para o celular o que pode mexer na demanda das unidades
+# em São Paulo (e Santos). O resto fica só registrado para o Claude revisar no Radar.
 CRITICO = [
     "megashow", "show gratuito na avenida paulista", "show gratuito na paulista",
     "show internacional gratuito",
 ]
+# Casas e espaços que enchem hotel (estádios, arenas, autódromo, grandes casas)
 GRANDES_LOCAIS = [
     "morumbis", "morumbi", "allianz parque", "nubank parque", "pacaembu",
-    "interlagos", "neo quimica arena", "arena sao paulo",
+    "interlagos", "neo quimica arena", "arena sao paulo", "autodromo",
+    "vibra sao paulo", "espaco unimed", "suhai music hall", "tokio marine hall",
+    "anhembi", "sambodromo",
+]
+# Pavilhões de feira e congresso
+PAVILHOES = [
+    "sao paulo expo", "expo center norte", "anhembi", "transamerica expo",
+    "pro magno", "frei caneca", "wtc events", "world trade center sao paulo",
+    "centro de convencoes", "bienal do ibirapuera", "pavilhao da bienal",
+]
+# Eventos que já acompanhamos: valem mesmo sem "São Paulo" no título
+EVENTOS_SP = [
+    "the town", "lollapalooza", "primavera sound", "ccxp", "gamescom latam",
+    "brasil game show", "apas show", "hospitalar", "equipotel", "conotel",
+    "wtm latin america", "abav expo", "fenatran", "bienal do livro de sao paulo",
+    "bienal internacional do livro", "parada lgbt", "parada do orgulho",
+    "marcha para jesus", "virada cultural", "sao silvestre", "anime friends",
+    "festival do japao", "innovation week", "gp sao paulo", "gp de sao paulo",
+    "grande premio de sao paulo", "stock car", "tattoo week", "salao do automovel de sao paulo",
+    "megashow",
 ]
 HOTELARIA = [
-    "hotelaria", "hoteleir", "hospedagem", "hospitalidade", "turismo",
-    "agencia de viagem", "agencias de viagem", "operadora de turismo", "abav",
-    "equipotel", "fohb", "abih", "wtm", "conotel", "aeroporto", "companhia aerea",
-    "companhias aereas", "resort", "airbnb", "booking",
+    "hotelaria", "hoteleir", "hospedagem", "hoteis", "hotel",
+]
+# Hotelaria só interessa quando fala de demanda/ocupação/preço na cidade
+DEMANDA = [
+    "ocupacao", "taxa de ocupacao", "diaria media", "diarias", "revpar", "lotad",
+    "lotacao", "demanda", "movimentar", "impacto economico", "turistas", "procura por hospedagem",
 ]
 COMERCIAL = [
-    "feira", "congresso", "expo center norte", "sao paulo expo", "anhembi",
-    "transamerica", "convencao", "summit", "forum", "rodada de negocios",
-    " expo ", "expo ", "bienal", "salao", "game show", " bgs ", "expositor",
-    "compradores", "edicao",
+    "feira", "congresso", "convencao", "summit", "rodada de negocios", "expositor",
+    "bienal", "salao", "game show",
 ]
 EVENTO = [
     "show", "turne", "festival", "ingresso", "pre-venda", "line-up", "lineup",
-    "apresentacao", "data extra", "esgot", "formula 1", "nfl", "nba",
+    "apresentacao", "data extra", "esgot", "formula 1", "nfl", "nba", "jogo",
 ]
-# Para contar, a notícia precisa citar São Paulo (ou um local daqui)
+# São Paulo (capital) e Santos
 SAO_PAULO = [
-    "sao paulo", " sp ", "(sp)", "sp:", "paulista", "paulistano", "capital paulista",
-    "santos", "guarulhos", "congonhas",
-] + GRANDES_LOCAIS + ["expo center norte", "sao paulo expo", "anhembi", "transamerica"]
+    "sao paulo", " sp ", "(sp)", "sp:", " sp,", " em sp", "na capital paulista",
+    "paulistano", "paulistana", "santos", "guarulhos", "congonhas",
+] + GRANDES_LOCAIS + PAVILHOES
+# Outro lugar citado no título derruba a notícia (a não ser que também cite SP)
+OUTRO_LUGAR = [
+    "rio de janeiro", " rio ", "-rj", " rj", "(rj)", "belo horizonte", " bh ", " bh,", "curitiba",
+    "porto alegre", "salvador", "recife", "fortaleza", "brasilia", "goiania", "florianopolis",
+    "manaus", "belem", "natal (rn)", "bahia", "minas gerais", "parana", "santa catarina",
+    "rio grande do sul", "pernambuco", "ceara", "cumbuco", "paris", "lisboa", "europa",
+    "estados unidos", " eua", "interior de sp", "interior paulista", "interior de sao paulo",
+    "litoral norte", "campinas", "ribeirao preto", "sorocaba", "barretos", "guaxupe",
+    "sao roque", "novo hamburgo", "valinhos", "jundiai",
+]
 # Notícias que não interessam
 EXCLUIR = [
     "morre", "morte", "assassin", "assalto", "preso", "policia", "acidente",
     "horoscopo", "receita de", " ato ", "manifestacao", "protesto", "bolsonaro",
     " lula ", "sem brasil", "super bowl", "eleicao", "candidato", "emociona",
     "arrasta", "relembre", "como foi", "como assistir", "saiba como assistir", "review",
-    "o que esperar", "setlist", " da show ", " deu show ", "dicas para",
+    "o que esperar", "setlist", " da show ", " deu show ", "dicas para", "onde assistir",
+    "emprego", "vagas", "concurso", "escala 6", "6x1", "6×1", "sindica", "salario",
+    "premia", "premio", "premiacao", "ranking", "melhores hoteis", "open bar", "promocao",
+    "desconto", "cupom", "black friday", "orcamento", "safra", "imposto", "reforma tributaria",
+    "lei ", "projeto de lei", "senado", "camara", "musicas que", "motivos para",
+    "veja agenda", "agenda de shows", "o que fazer", "programacao gratuita", "fim de semana em sp",
+    "temporada da nba", "abertura da nba", "league pass", "prime video", "carro", "suv",
+    "lancamento do", "preco e fotos", "novo template", "reune ", "reuniu", "despedida",
+    "ultimo show", "trofeu", "essencial para",
 ]
-# Entidades do setor que valem alerta mesmo sem citar São Paulo
-HOTELARIA_NACIONAL = ["abav", "equipotel", "fohb", "abih", "wtm", "conotel", "embratur"]
-
-# Para um show comum virar alerta no celular, a manchete precisa ser de anúncio.
-# Os demais ficam só registrados (o Claude revisa no Radar).
+# Para um show virar alerta no celular, a manchete precisa ser de anúncio.
 ANUNCIO = [
     "anuncia", "confirma", "data extra", "show extra", "nova data", "ingressos",
     "pre-venda", "venda geral", "turne", "line-up", "lineup", "atracoes", "vem ao brasil",
     "volta ao brasil", "retorno ao brasil", "primeiro show", "show unico", "adiad", "cancel",
+]
+# Para um evento já acompanhado virar alerta: novidade de data, venda ou programação
+NOVIDADE = [
+    "data", "datas", "ingresso", "pre-venda", "venda", "adiad", "cancel", "line-up", "lineup",
+    "programacao", "atracoes", "extra", "anuncia", "confirma data", "confirma edicao",
+    "2028", "nova edicao", "visitantes", "expositores",
 ]
