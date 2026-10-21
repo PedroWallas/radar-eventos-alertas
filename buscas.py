@@ -85,6 +85,15 @@ BUSCAS = {
         "feriado prolongado São Paulo 2027",
         "Virada Cultural 2027",
         "Parada LGBT São Paulo 2027",
+        "Parada do Orgulho LGBT 2028 São Paulo",
+        "Marcha para Jesus 2027 São Paulo",
+        "Réveillon Avenida Paulista 2027",
+        "São Silvestre 2027",
+        "Salão do Automóvel 2027",
+        "Anime Friends 2027",
+        "Festival do Japão 2027",
+        "CCXP 2027 datas",
+        "Lollapalooza Brasil 2028",
     ],
 }
 
