@@ -3,7 +3,12 @@ name: Radar de Eventos 24h
 on:
   schedule:
     - cron: "*/10 * * * *"   # a cada 10 minutos, 24h por dia (horário UTC)
-  workflow_dispatch: {}       # botão "Run workflow" para rodar na hora
+  workflow_dispatch:           # botão "Run workflow" para rodar na hora
+    inputs:
+      teste:
+        description: "Mandar uma mensagem de teste em todos os canais"
+        type: boolean
+        default: false
   push:
     branches: [main]
     paths: [".github/workflows/**", "monitor.py", "buscas.py"]  # roda na hora quando o código muda
@@ -31,6 +36,11 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC || 'radar-ape-pedro-7391' }}
+          GREENAPI_URL: ${{ secrets.GREENAPI_URL }}
+          GREENAPI_INSTANCE: ${{ secrets.GREENAPI_INSTANCE }}
+          GREENAPI_TOKEN: ${{ secrets.GREENAPI_TOKEN }}
+          WHATSAPP_TO: ${{ secrets.WHATSAPP_TO }}
+          ENVIAR_TESTE: ${{ inputs.teste && '1' || '' }}
         run: python monitor.py
       - name: Salvar o que já foi visto
         run: |

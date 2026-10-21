@@ -20,7 +20,18 @@ Para incluir ou tirar buscas, edite `buscas.py`. Cada linha é uma busca.
 
 ## Configuração (uma vez só)
 
-### 1. Escolha o canal de aviso (pode configurar os dois)
+### 1. Escolha o canal de aviso (pode configurar mais de um)
+
+**ntfy (já ativo):** app ntfy no celular, inscrito no tópico do Radar.
+
+**WhatsApp pela Green-API (plano Developer, gratuito, até 3 conversas)**
+A Green-API conecta um WhatsApp como se fosse o WhatsApp Web e envia mensagens por ele. Use um **segundo número** como remetente (por exemplo, um chip extra com WhatsApp Business): se o remetente for o seu próprio número, a mensagem cai na conversa com você mesmo e o celular não toca.
+1. Crie a conta em https://console.green-api.com e crie uma instância do plano **Developer**.
+2. Na instância, clique para autorizar e leia o QR code com o WhatsApp do número remetente (Aparelhos conectados → Conectar aparelho).
+3. Anote **apiUrl**, **idInstance** e **apiTokenInstance** que aparecem na instância.
+4. Cadastre os segredos `GREENAPI_URL`, `GREENAPI_INSTANCE`, `GREENAPI_TOKEN` e `WHATSAPP_TO` (o seu número que vai receber, ex.: 5511999999999).
+5. Em Actions → Radar de Eventos 24h → Run workflow, marque **Mandar uma mensagem de teste** e rode.
+Observação: a Green-API não é um serviço oficial do WhatsApp; o número remetente pode ser bloqueado pelo WhatsApp em uso intenso. Por isso o ideal é um número só para isso.
 
 **WhatsApp pelo CallMeBot (gratuito, uso pessoal)**
 1. Abra https://www.callmebot.com/blog/free-api-whatsapp-messages/ e pegue o número do bot que aparece na página. Se aparecer mascarado, o serviço está lotado: tente de novo em alguns dias e use o Telegram enquanto isso.
@@ -39,6 +50,10 @@ No repositório: **Settings → Secrets and variables → Actions → New reposi
 |---|---|
 | `CALLMEBOT_PHONE` | seu número só com dígitos, com 55 e DDD (ex.: 5511999999999) |
 | `CALLMEBOT_APIKEY` | a apikey do CallMeBot |
+| `GREENAPI_URL` | apiUrl da instância Green-API |
+| `GREENAPI_INSTANCE` | idInstance da Green-API |
+| `GREENAPI_TOKEN` | apiTokenInstance da Green-API |
+| `WHATSAPP_TO` | número que recebe os alertas, só dígitos com 55 e DDD |
 | `TELEGRAM_TOKEN` | token do @BotFather |
 | `TELEGRAM_CHAT_ID` | seu chat id |
 

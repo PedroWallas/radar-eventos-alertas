@@ -11,6 +11,10 @@ Variáveis de ambiente (segredos do GitHub). Configure pelo menos um canal:
   TELEGRAM_TOKEN    token do bot criado no @BotFather
   TELEGRAM_CHAT_ID  seu id de chat no Telegram
   NTFY_TOPIC        nome do tópico no app ntfy (notificação no celular, grátis)
+  GREENAPI_URL      apiUrl da instância Green-API (ex.: https://7103.api.greenapi.com)
+  GREENAPI_INSTANCE idInstance da Green-API
+  GREENAPI_TOKEN    apiTokenInstance da Green-API
+  WHATSAPP_TO       número que recebe os alertas, só dígitos com 55 e DDD
 Opcionais:
   MODO_TESTE=1      não envia nada, só imprime
   GRUPO=a|b|c       força um grupo de buscas (padrão: reveza pelo minuto)
@@ -149,6 +153,20 @@ def _whatsapp(texto):
     return st == 200 and "error" not in corpo.lower()[:300]
 
 
+def _greenapi(texto):
+    base = os.environ.get("GREENAPI_URL", "").strip().rstrip("/")
+    inst = os.environ.get("GREENAPI_INSTANCE", "").strip()
+    tok = os.environ.get("GREENAPI_TOKEN", "").strip()
+    para = re.sub(r"\D", "", os.environ.get("WHATSAPP_TO", ""))
+    if not base or not inst or not tok or not para:
+        return None
+    corpo = json.dumps({"chatId": para + "@c.us", "message": texto, "linkPreview": False}).encode("utf-8")
+    req = urllib.request.Request(f"{base}/waInstance{inst}/sendMessage/{tok}", data=corpo,
+                                 headers={"User-Agent": UA, "Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return r.status == 200 and "idMessage" in r.read().decode("utf-8", "ignore")
+
+
 def _telegram(texto):
     token = os.environ.get("TELEGRAM_TOKEN", "").strip()
     chat = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
@@ -180,7 +198,7 @@ def enviar(texto):
         print("----- MENSAGEM (teste) -----\n" + texto + "\n----------------------------")
         return True
     algum, ok_total = False, True
-    for nome, canal in (("WhatsApp", _whatsapp), ("Telegram", _telegram), ("ntfy", _ntfy)):
+    for nome, canal in (("WhatsApp", _whatsapp), ("WhatsApp Green-API", _greenapi), ("Telegram", _telegram), ("ntfy", _ntfy)):
         for tentativa in range(3):
             try:
                 r = canal(texto)
@@ -199,7 +217,7 @@ def enviar(texto):
         if r is not None:
             time.sleep(3)
     if not algum:
-        print("Nenhum canal configurado (CallMeBot, Telegram ou ntfy): mensagem não enviada.")
+        print("Nenhum canal configurado (CallMeBot, Green-API, Telegram ou ntfy): mensagem não enviada.")
         return False
     return ok_total
 
@@ -271,6 +289,8 @@ def main():
         time.sleep(1.2)
 
     print(f"Grupo {grupo}: {len(consultas)} buscas, {erros} falhas, {len(novos)} novidades relevantes.")
+    if os.environ.get("ENVIAR_TESTE") == "1":
+        enviar("✅ *Teste do Radar de Eventos Apê.* Se você recebeu esta mensagem, este canal está funcionando.")
     if primeira and not TESTE:
         # Enquanto nenhum canal estiver configurado, só registra (o Claude usa o registro no Radar).
         # Quando o primeiro aviso sair, marca como iniciado e passa a mandar as novidades.
