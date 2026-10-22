@@ -241,14 +241,30 @@ def montar_mensagens(novos):
                     "Se houver data: criar regra de proteção no Climber agora.")
     resto = [x for x in novos if x["prioridade"] not in ("CRITICO", "REGISTRO")]
     resto.sort(key=lambda x: ORDEM.index(x["prioridade"]))
+
+    # Cabeçalho: resumo de urgência (quantos de cada prioridade, do mais quente ao mais frio)
+    ICONE_PRI = {"FONTE": "🔴", "COMERCIAL+": "🟠", "ALTO": "🟡", "COMERCIAL": "🔵", "EVENTO": "⚪"}
+    from collections import Counter
+    contagem = Counter(n["prioridade"] for n in resto)
+    resumo_partes = []
+    for pri in ORDEM:
+        if pri in contagem:
+            resumo_partes.append(f"{ICONE_PRI.get(pri, '•')} {contagem[pri]}x {pri}")
+    resumo = "  ".join(resumo_partes)
+
     for i in range(0, len(resto), MAX_POR_MENSAGEM):
         bloco = resto[i:i + MAX_POR_MENSAGEM]
-        linhas = [f"📡 *Radar de Eventos Apê* ({agora}) · {len(resto)} novidade(s)"]
+        parte_info = f" · parte {i // MAX_POR_MENSAGEM + 1}" if len(resto) > MAX_POR_MENSAGEM else ""
+        linhas = [
+            f"📡 *Radar de Eventos Apê* · {agora}{parte_info}",
+            resumo,
+        ]
         grupo = None
         for n in bloco:
+            rotulo_com_pri = f"{ICONE_PRI.get(n['prioridade'], '•')} *{n['rotulo'].lstrip('🎫🎤🏨💼 ')}*"
             if n["rotulo"] != grupo:
                 grupo = n["rotulo"]
-                linhas.append(f"\n*{grupo}*")
+                linhas.append(f"\n{rotulo_com_pri}")
             linhas.append(f"• {n['titulo']}\n  {n['link']}")
         msgs.append("\n".join(linhas))
     return msgs
