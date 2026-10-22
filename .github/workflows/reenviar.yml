@@ -1,0 +1,42 @@
+name: Reenviar alertas pendentes
+
+on:
+  workflow_dispatch:
+    inputs:
+      max:
+        description: "Máximo de alertas a reenviar (padrão: 200)"
+        type: number
+        default: 200
+
+permissions:
+  contents: write
+
+jobs:
+  reenviar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Reenviar alertas represados
+        env:
+          CALLMEBOT_PHONE: ${{ secrets.CALLMEBOT_PHONE }}
+          CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC || 'radar-ape-pedro-7391' }}
+          GREENAPI_URL: ${{ secrets.GREENAPI_URL }}
+          GREENAPI_INSTANCE: ${{ secrets.GREENAPI_INSTANCE }}
+          GREENAPI_TOKEN: ${{ secrets.GREENAPI_TOKEN }}
+          WHATSAPP_TO: ${{ secrets.WHATSAPP_TO }}
+        run: python reenviar.py --max ${{ inputs.max }}
+      - name: Salvar estado atualizado
+        run: |
+          git config user.name "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          git add estado
+          git diff --cached --quiet || git commit -m "radar: reenvio de pendentes $(date -u +%Y-%m-%dT%H:%MZ)"
+          git pull --rebase --autostash || true
+          git push || true
