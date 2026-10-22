@@ -3514,5 +3514,29 @@
   "busca": "feira de hotelaria São Paulo",
   "detectadoEm": "2026-10-22T01:57:01.261835+00:00",
   "enviado": true
+ },
+ {
+  "id": "cae apresenta show gratuito no sesc avenida paulista",
+  "titulo": "CAE apresenta show gratuito no Sesc Avenida Paulista",
+  "fonte": "ZonaSuburbana",
+  "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOMUdXN0VMaUZjTDhXYjcyRVRFLVdiNGxXdy05dXc4dHRzcjk0WGhzUzdEcTg5RFpqTXNjNFV6a01EQjBtaFZNc0h6UnIwRXo0eTlxT0gya19icy05WW9VN0NTSzNvZ3VDWmpxYlRRZzZORTF0OXBkTm9EZ09sQ01OQk9XNTBYMGRvSkhxc2ZtRQ?oc=5",
+  "publicado": "2026-10-22T11:32:42+00:00",
+  "prioridade": "CRITICO",
+  "rotulo": "🚨 MEGASHOW / PAULISTA",
+  "busca": "show gratuito Avenida Paulista",
+  "detectadoEm": "2026-10-22T12:48:52.068548+00:00",
+  "enviado": true
+ },
+ {
+  "id": "kings of antikva jogo exposto pelo sebrae em sp e lancado no steam",
+  "titulo": "Kings of Antikva, jogo exposto pelo Sebrae em SP, é lançado no Steam",
+  "fonte": "Drops de Jogos",
+  "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNOFE5TVlkQkVteXFELVRzaFp6ZnlraUNfQ0lETVJ0OGs1RzlTcEdmd1poRXZBV2VrcW5BUEtEWERCTTZfV084RW90YXZFTGxfOUw3dFZBTnlXWkQyTXBISE5CYW5oNS12QXllWUJaN1REMGZhaGYxcUZQdk9ZbExSWkhCSWZjRFJDUnU2SEMwRUJVRzg4STM2cjltQ08zM1pfUnBQOURDYnlGM2MwbnkzQ1BsNUEzVEd4a3c?oc=5",
+  "publicado": "2026-10-21T13:52:32+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "gamescom latam 2027",
+  "detectadoEm": "2026-10-22T12:49:20.395571+00:00",
+  "enviado": true
  }
 ]
