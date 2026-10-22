@@ -144,7 +144,7 @@ def classificar(item):
     return None
 
 
-ORDEM = ["CRITICO", "FONTE", "COMERCIAL+", "ALTO", "COMERCIAL", "EVENTO", "REGISTRO"]
+ORDEM = ["CRITICO", "FONTE", "ALTO", "COMERCIAL+", "COMERCIAL", "EVENTO", "REGISTRO"]
 
 
 def _get(url, data=None):
