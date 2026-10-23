@@ -3826,5 +3826,42 @@
   "busca": "feira de hotelaria São Paulo",
   "detectadoEm": "2026-10-23T01:56:36.348548+00:00",
   "enviado": true
+ },
+ {
+  "id": "alta demanda por ingressos faz u2 anunciar show extra para sp",
+  "titulo": "Alta demanda por ingressos faz U2 anunciar show extra para SP",
+  "fonte": "Roque Reverso",
+  "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNOHoxQTE1OS16Rmk4UlpoT3JuTUpSbEN5ZjNTSUlNV00wd21icEVjZGVjNGxQVmp5bFZGWjVoLVRidXNoRXB0UnhVbEpVaTBZSVR0U3hWZDhvNWlpdGxQWi0wYmlzMTVQRVpQV2NwcnpyOGN5czMtNXpTakNIa3IxeGJITUxlSU00ajlCQXhSalBLZXVaLW9FcUlIM3BidGc?oc=5",
+  "publicado": "2026-10-23T05:12:07+00:00",
+  "prioridade": "EVENTO",
+  "rotulo": "🎫 Venda, data extra ou mudança de data em SP",
+  "busca": "anuncia show em São Paulo",
+  "detectadoEm": "2026-10-23T06:49:16.733461+00:00",
+  "tipoAlerta": "mudanca-data",
+  "enviado": true
+ },
+ {
+  "id": "mp de sao paulo investiga discrepancia entre mapas de assentos para shows do bts",
+  "titulo": "MP de São Paulo investiga discrepância entre mapas de assentos para shows do BTS e alerta sobre possíveis problemas de visibilidade para os fãs.",
+  "fonte": "Repórter Maceió",
+  "link": "https://news.google.com/rss/articles/CBMiigJBVV95cUxQYXdrZjN2bFZwWk9GRjJrRE40a0lscmJJTGxtWF9mTGU1U3JZVjJfN3FsM0JBaW1WLXQwbEtOOTdmVG1yaGpHVTV3SUl2VGxDMGJjZEFOYW8xYXRHM1J6T0Z2YVZLSWJQQk9IMkcwcGY3TnMwNDdBWXNsOGdxX2hrS0c0Y3JOQUZjVTZwVWMxUHhZTjJQbjJSZlpiay01a19vSFNJUFhVWG91RDdfLW5KSFdSd09IdmZpU0xNWU5ENkswWnROakpiNTFaakFnaVVkMXNKQUhqNTRuVnViVy1SUXBsVWd4cC1jakFGMmtzUmRHNGV3ZFJLUTV0aFlMTTBUYzJJcjRZbklmZw?oc=5",
+  "publicado": "2026-10-22T21:00:32+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "show único no Brasil São Paulo",
+  "detectadoEm": "2026-10-23T06:49:20.514462+00:00",
+  "enviado": true
+ },
+ {
+  "id": "mercedes benz projeta fenatran 10 menor do que edicao anterior",
+  "titulo": "Mercedes-Benz projeta Fenatran 10% menor do que edição anterior",
+  "fonte": "AutoData Editora",
+  "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNdnh1d2c3a1N0TVlXa1p5YmJfY1dsYlJ2SE1EN1JlX2JHTUppM00wb1ZpQXhfaWF5aTYwWVE2b1AwZ3lDbXp3anBmdGFSSXhsYkZpc012aTBoNHJBSTRDWmVhd0hRcHNBYXZhcWwtSTF1Y0V2QW9jTEJfNzI4ZzRBOHhrTjdyR3dMNDg0OC1WNHBlTUYzY3RpdGFyc3FmSTZTTXc2V3ppeFdmaGZCY055VGJLUDh1UQ?oc=5",
+  "publicado": "2026-10-22T22:13:00+00:00",
+  "prioridade": "EVENTO",
+  "rotulo": "🎫 Evento acompanhado pelo Radar",
+  "busca": "feira São Paulo Expo 2027",
+  "detectadoEm": "2026-10-23T06:49:22.587305+00:00",
+  "enviado": true
  }
 ]
