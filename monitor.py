@@ -136,7 +136,8 @@ def classificar(item):
     if conhecido and tem(t, NOVIDADE):
         return ("EVENTO", "🎫 Evento acompanhado pelo Radar")
     if em_sp and tem(t, EVENTO) and tem(t, ["pre-venda", "venda geral", "data extra", "show extra", "nova data", "adiad", "cancel"]):
-        return ("EVENTO", "🎫 Venda, data extra ou mudança de data em SP")
+        _mudanca = tem(t, ["data extra", "show extra", "nova data", "adiad", "cancel"])
+        return ("EVENTO", "🎫 Venda, data extra ou mudança de data em SP", "mudanca-data" if _mudanca else None)
     if em_sp and tem(t, EVENTO) and tem(t, ANUNCIO) and tem(t, [" no brasil", " ao brasil", "show unico", "unico show", "pela primeira vez"]):
         return ("EVENTO", "🎫 Show internacional em SP")
     if em_sp and (tem(t, EVENTO) or tem(t, COMERCIAL)):
@@ -306,13 +307,16 @@ def main():
             if any(parecido(pw, r) for r in recentes):
                 continue  # mesma notícia em outro site
             recentes.append(pw)
-            novos.append({
+            reg = {
                 "id": k[:80], "titulo": re.sub(r"\s+-\s+[^-]+$", "", it["titulo"]),
                 "fonte": it["fonte"], "link": it["link"],
                 "publicado": it["pub"].isoformat() if it["pub"] else None,
                 "prioridade": cl[0], "rotulo": cl[1], "busca": it["busca"],
                 "detectadoEm": datetime.now(timezone.utc).isoformat(),
-            })
+            }
+            if len(cl) > 2 and cl[2]:
+                reg["tipoAlerta"] = cl[2]
+            novos.append(reg)
         time.sleep(1.2)
 
     print(f"Grupo {grupo}: {len(consultas)} buscas, {erros} falhas, {len(novos)} novidades relevantes.")
