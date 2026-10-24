@@ -4152,5 +4152,17 @@
   "busca": "show gratuito Avenida Paulista",
   "detectadoEm": "2026-10-24T10:10:35.821831+00:00",
   "enviado": true
+ },
+ {
+  "id": "show barra possibilidade de fanfast no nubank parque",
+  "titulo": "Show barra possibilidade de fanfast no Nubank Parque",
+  "fonte": "tmc.com.br",
+  "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQVlhsdl81YVpfdFBCVlBhUDVrdEd4c3JxOC1CbHpGU3ZiektoSkIyMElUVkN6RWxweTd3OVBlSXNCdUtHOHdNLV9QN1NQaXdaU0MxRDVEM0ZPN0s0WW5fSUxkSVBWdkVyWmZZem5fVWhMNGgxbjZhZDQ3Zk9vNGtGdlJhVkF2VVk?oc=5",
+  "publicado": "2026-10-24T10:00:00+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "show Nubank Parque",
+  "detectadoEm": "2026-10-24T10:30:50.862990+00:00",
+  "enviado": true
  }
 ]
