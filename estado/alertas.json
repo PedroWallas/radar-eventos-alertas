@@ -4549,5 +4549,17 @@
   "busca": "show único no Brasil São Paulo",
   "detectadoEm": "2026-10-26T11:20:51.201191+00:00",
   "enviado": true
+ },
+ {
+  "id": "informacoes sobre ingressos para bahia x sao paulo na fonte nova",
+  "titulo": "Informações sobre ingressos para Bahia x São Paulo na Fonte Nova",
+  "fonte": "Futebol Baiano",
+  "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPN0hkVTZaeXZqNlpyWXcyeEJ6MExFVWdPaGoxdkdEbFFXZXMwVWZfZnNVMkhmZVJ0OGVQa1FxUHJpQm1VbWdTZmFEbXJPNVFmeF9nSEVHOEhqb2JuLS1Gdzh4SlZ0N1pLcVdGYXN5X0tTYkdDSU5ON1k0WURmeWpsajd4RmotXzNqZUllc1hiX3ZjbEhJTmJfVGlWZklfbW1mRkswclFFVmZZVWlf?oc=5",
+  "publicado": "2026-10-26T11:10:00+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "ingressos à venda show São Paulo",
+  "detectadoEm": "2026-10-26T11:31:08.506502+00:00",
+  "enviado": true
  }
 ]
