@@ -4561,5 +4561,29 @@
   "busca": "ingressos à venda show São Paulo",
   "detectadoEm": "2026-10-26T11:31:08.506502+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:ticketmaster.com.br/event/espetaculo-origens-associacao-fernanda-bianchini-bale-de-cegos-tokio-marine-hall",
+  "titulo": "Tokio Marine Hall: Espetaculo origens associacao fernanda bianchini bale de cegos tokio marine hall",
+  "fonte": "Tokio Marine Hall",
+  "link": "https://www.ticketmaster.com.br/event/espetaculo-origens-associacao-fernanda-bianchini-bale-de-cegos-tokio-marine-hall",
+  "publicado": "2026-10-26T12:51:26.559973+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "fonte oficial: tokiomarine",
+  "detectadoEm": "2026-10-26T12:51:26.559973+00:00",
+  "enviado": false
+ },
+ {
+  "id": "dethklok estreia no brasil nesta terca feira com show em sao paulo",
+  "titulo": "Dethklok estreia no Brasil nesta terça-feira com show em São Paulo",
+  "fonte": "Rato de Show",
+  "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNaHhXVmlFOFM4MXFHSms3U3NUcGsteWFKTXFhSldOVHpySWpaaEljLVc0TWxXZVQ1QTk2VDFlSzYzdkpRZmZDcU5lcmxDVjAydlNhdGN4UHRld1pVUHlJaVVXV0cyOEQ5TEhwak5hdUNZc0Z1QWJDQTkwMjBaQThjLU9SclRPTnRnNmJhQmJCSGREektsa0IyYm1HYk8?oc=5",
+  "publicado": "2026-10-26T12:03:26+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "anuncia show no Brasil 2027",
+  "detectadoEm": "2026-10-26T12:50:44.181141+00:00",
+  "enviado": true
  }
 ]
