@@ -15,6 +15,7 @@ Variáveis de ambiente (segredos do GitHub). Configure pelo menos um canal:
   GREENAPI_INSTANCE idInstance da Green-API
   GREENAPI_TOKEN    apiTokenInstance da Green-API
   WHATSAPP_TO       número que recebe os alertas, só dígitos com 55 e DDD
+  GREENAPI_GRUPO_APE id do grupo "Operação Precificação" (opcional, termina em @g.us)
 Opcionais:
   MODO_TESTE=1      não envia nada, só imprime
   GRUPO=a|b|c       força um grupo de buscas (padrão: reveza pelo minuto)
@@ -165,18 +166,33 @@ def _whatsapp(texto):
     return st == 200 and "error" not in corpo.lower()[:300]
 
 
-def _greenapi(texto):
+def _greenapi_enviar(chat_id, texto):
     base = os.environ.get("GREENAPI_URL", "").strip().rstrip("/")
     inst = os.environ.get("GREENAPI_INSTANCE", "").strip()
     tok = os.environ.get("GREENAPI_TOKEN", "").strip()
-    para = re.sub(r"\D", "", os.environ.get("WHATSAPP_TO", ""))
-    if not base or not inst or not tok or not para:
+    if not base or not inst or not tok or not chat_id:
         return None
-    corpo = json.dumps({"chatId": para + "@c.us", "message": texto, "linkPreview": False}).encode("utf-8")
+    corpo = json.dumps({"chatId": chat_id, "message": texto, "linkPreview": False}).encode("utf-8")
     req = urllib.request.Request(f"{base}/waInstance{inst}/sendMessage/{tok}", data=corpo,
                                  headers={"User-Agent": UA, "Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=30) as r:
         return r.status == 200 and "idMessage" in r.read().decode("utf-8", "ignore")
+
+
+def _greenapi(texto):
+    para = re.sub(r"\D", "", os.environ.get("WHATSAPP_TO", ""))
+    if not para:
+        return None
+    return _greenapi_enviar(para + "@c.us", texto)
+
+
+def _greenapi_grupo(texto):
+    grupo = os.environ.get("GREENAPI_GRUPO_APE", "").strip()
+    if not grupo:
+        return None
+    if not grupo.endswith("@g.us"):
+        grupo += "@g.us"
+    return _greenapi_enviar(grupo, texto)
 
 
 def _telegram(texto):
@@ -210,7 +226,9 @@ def enviar(texto):
         print("----- MENSAGEM (teste) -----\n" + texto + "\n----------------------------")
         return True
     algum, ok_total = False, True
-    for nome, canal in (("WhatsApp", _whatsapp), ("WhatsApp Green-API", _greenapi), ("Telegram", _telegram), ("ntfy", _ntfy)):
+    for nome, canal in (("WhatsApp", _whatsapp), ("WhatsApp Green-API", _greenapi),
+                        ("WhatsApp Green-API (grupo Apê)", _greenapi_grupo),
+                        ("Telegram", _telegram), ("ntfy", _ntfy)):
         for tentativa in range(3):
             try:
                 r = canal(texto)

@@ -48,6 +48,11 @@ A Green-API conecta um WhatsApp como se fosse o WhatsApp Web e envia mensagens p
 5. Em Actions → Radar de Eventos 24h → Run workflow, marque **Mandar uma mensagem de teste** e rode.
 Observação: a Green-API não é um serviço oficial do WhatsApp; o número remetente pode ser bloqueado pelo WhatsApp em uso intenso. Por isso o ideal é um número só para isso.
 
+**Grupo da Apê (opcional, além do seu número pessoal)**
+Com a mesma instância Green-API já configurada acima, dá pra mandar os alertas também pra um grupo de WhatsApp — o remetente só precisa já estar dentro do grupo.
+1. No [console da Green-API](https://console.green-api.com) → **Chats**, ache o grupo pela busca e abra o cabeçalho dele para ver o **id** (algo como `120363XXXXXXXXXXX`).
+2. Cadastre o segredo `GREENAPI_GRUPO_APE` com esse id (pode colar com ou sem o sufixo `@g.us`, o monitor completa sozinho).
+
 **WhatsApp pelo CallMeBot (gratuito, uso pessoal)**
 1. Abra https://www.callmebot.com/blog/free-api-whatsapp-messages/ e pegue o número do bot que aparece na página. Se aparecer mascarado, o serviço está lotado: tente de novo em alguns dias e use o Telegram enquanto isso.
 2. Salve o número nos contatos e mande pelo WhatsApp: `I allow callmebot to send me messages`
@@ -69,6 +74,7 @@ No repositório: **Settings → Secrets and variables → Actions → New reposi
 | `GREENAPI_INSTANCE` | idInstance da Green-API |
 | `GREENAPI_TOKEN` | apiTokenInstance da Green-API |
 | `WHATSAPP_TO` | número que recebe os alertas, só dígitos com 55 e DDD |
+| `GREENAPI_GRUPO_APE` | id do grupo "Operação Precificação" (opcional, termina em `@g.us`) |
 | `TELEGRAM_TOKEN` | token do @BotFather |
 | `TELEGRAM_CHAT_ID` | seu chat id |
 
