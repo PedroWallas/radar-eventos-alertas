@@ -40,6 +40,7 @@ jobs:
           GREENAPI_INSTANCE: ${{ secrets.GREENAPI_INSTANCE }}
           GREENAPI_TOKEN: ${{ secrets.GREENAPI_TOKEN }}
           WHATSAPP_TO: ${{ secrets.WHATSAPP_TO }}
+          GREENAPI_GRUPO_APE: ${{ secrets.GREENAPI_GRUPO_APE }}
           ENVIAR_TESTE: ${{ inputs.teste && '1' || '' }}
           FONTES: ${{ github.event_name != 'schedule' && '1' || '' }}
         run: python monitor.py
