@@ -5739,5 +5739,17 @@
   "busca": "data extra show São Paulo",
   "detectadoEm": "2026-10-28T22:31:09.556238+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:suhaimusichall.com.br/evento/super-show-de-natal-kidzhouse",
+  "titulo": "Suhai Music Hall: dom 06 dez Super Show de Natal Kidzhouse",
+  "fonte": "Suhai Music Hall",
+  "link": "https://suhaimusichall.com.br/evento/super-show-de-natal-kidzhouse/",
+  "publicado": "2026-10-28T23:11:15.381666+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "fonte oficial: suhai",
+  "detectadoEm": "2026-10-28T23:11:15.381666+00:00",
+  "enviado": false
  }
 ]
