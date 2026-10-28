@@ -5522,5 +5522,17 @@
   "busca": "show único no Brasil São Paulo",
   "detectadoEm": "2026-10-28T15:40:48.828564+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:ticketmaster.com.br/event/pitbull",
+  "titulo": "Live Nation Brasil: Pitbull I'm Back Pré-Venda Artista: 29/10 | Venda Geral: 30/10",
+  "fonte": "Live Nation Brasil",
+  "link": "https://www.ticketmaster.com.br/event/pitbull",
+  "publicado": "2026-10-28T16:11:15.795877+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: livenation",
+  "detectadoEm": "2026-10-28T16:11:15.795877+00:00",
+  "enviado": true
  }
 ]
