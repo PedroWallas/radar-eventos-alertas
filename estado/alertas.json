@@ -5654,5 +5654,30 @@
   "busca": "show Suhai Music Hall",
   "detectadoEm": "2026-10-28T20:31:01.045941+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:suhaimusichall.com.br/evento/victor-leo",
+  "titulo": "Suhai Music Hall: dom 20 dez Victor & Leo VENDAS: 29/10 às 18h.",
+  "fonte": "Suhai Music Hall",
+  "link": "https://suhaimusichall.com.br/evento/victor-leo/",
+  "publicado": "2026-10-28T21:01:29.767996+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "fonte oficial: suhai",
+  "detectadoEm": "2026-10-28T21:01:29.767996+00:00",
+  "enviado": false
+ },
+ {
+  "id": "show de ivete sangalo em sao paulo e adiado para 2027 veja nova data",
+  "titulo": "Show de Ivete Sangalo em São Paulo é adiado para 2027; veja nova data",
+  "fonte": "POPLine",
+  "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPYnZCd1ZuSm9ySndvRmZ4RXQ5T3dKRDN4a3N4SkNPWC10VkpZVkV2SmZmRGNtbTlpMHdSbFVtRU5oUERmYWRWRVFPZjF5RnAxLUhrNEhvN1c5VkZoY2QxM05UbmNoVG1Tc2Y1YW1fR3NmR3VGc211TXJTangyT3M4SXlTYXBsOW1Xd1E?oc=5",
+  "publicado": "2026-10-28T20:50:43+00:00",
+  "prioridade": "EVENTO",
+  "rotulo": "🎫 Venda, data extra ou mudança de data em SP",
+  "busca": "festival São Paulo 2027",
+  "detectadoEm": "2026-10-28T21:01:27.025272+00:00",
+  "tipoAlerta": "mudanca-data",
+  "enviado": true
  }
 ]
