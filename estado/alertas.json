@@ -6423,5 +6423,17 @@
   "busca": "show gratuito Avenida Paulista",
   "detectadoEm": "2026-10-30T12:45:08.277230+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:ticketmaster.com.br/event/calema-tokio-marine-hall",
+  "titulo": "Tokio Marine Hall: Calema tokio marine hall",
+  "fonte": "Tokio Marine Hall",
+  "link": "https://www.ticketmaster.com.br/event/calema-tokio-marine-hall",
+  "publicado": "2026-10-30T13:21:30.473770+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "fonte oficial: tokiomarine",
+  "detectadoEm": "2026-10-30T13:21:30.473770+00:00",
+  "enviado": false
  }
 ]
