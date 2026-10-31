@@ -1,0 +1,32 @@
+name: Aviso no grupo
+
+# Envio manual de um aviso para o grupo do WhatsApp da Apê.
+# O texto é digitado no botão "Run workflow" e não fica salvo no repositório.
+on:
+  workflow_dispatch:
+    inputs:
+      mensagem:
+        description: "Texto do aviso (use \\n para quebrar linha)"
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  avisar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Mandar no grupo
+        env:
+          GREENAPI_URL: ${{ secrets.GREENAPI_URL }}
+          GREENAPI_INSTANCE: ${{ secrets.GREENAPI_INSTANCE }}
+          GREENAPI_TOKEN: ${{ secrets.GREENAPI_TOKEN }}
+          GREENAPI_GRUPO_APE: ${{ secrets.GREENAPI_GRUPO_APE }}
+          MENSAGEM: ${{ inputs.mensagem }}
+        run: python ferramentas/aviso_grupo.py

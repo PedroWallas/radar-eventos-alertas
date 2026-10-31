@@ -64,6 +64,7 @@ BUSCAS = {
         "NFL jogo São Paulo 2027",
         "NBA jogo Brasil São Paulo",
         "Stock Car Interlagos 2027",
+        "Porsche Fest Interlagos",
     ],
     # Hotelaria, turismo e parcerias (prioridade comercial da Apê)
     "c": [
