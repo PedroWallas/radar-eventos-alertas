@@ -7107,5 +7107,18 @@
   "busca": "ingressos à venda show São Paulo",
   "detectadoEm": "2026-11-01T15:31:10.040911+00:00",
   "enviado": true
+ },
+ {
+  "id": "ivete sangalo cancela show em sp e remarca data entenda o motivo",
+  "titulo": "Ivete Sangalo cancela show em SP e remarca data; entenda o motivo",
+  "fonte": "Terra",
+  "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQa3Q4WjRYb3cxdVk2eF9YQ2doM1NlazFxY2JFanBKSWlIX3VpYjkxcmU2OVRuU2JrNEt0Q2ZGYWRISkhaOS1oQ3lUbk8zd016N0Z2Wml3WE5KLU52eXVObTFuajhUU0JlV083U2Jid1YzangwWEZWRGhYOTE0UGNnUUZvRElSMkJxSDFtX3kxMEV0NmM2T2U4eVhIRUtQdFp0SnB2YWhKdUFFOV96aXJ3UWgxbkpCeEpMd1ZPenVfRlpSYkhzdTRjNm1qSi1iazhkQ1ZwdlNXalp1aGUw?oc=5",
+  "publicado": "2026-11-01T15:21:00+00:00",
+  "prioridade": "EVENTO",
+  "rotulo": "🎫 Venda, data extra ou mudança de data em SP",
+  "busca": "agências de viagem evento São Paulo",
+  "detectadoEm": "2026-11-01T15:50:59.512590+00:00",
+  "tipoAlerta": "mudanca-data",
+  "enviado": true
  }
 ]
