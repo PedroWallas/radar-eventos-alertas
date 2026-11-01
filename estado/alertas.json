@@ -6939,5 +6939,17 @@
   "busca": "show único no Brasil São Paulo",
   "detectadoEm": "2026-10-31T21:20:45.882332+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:ticket360.com.br/evento/33543/ingressos-para-mauricio-manieri-classics-tour-inesquecivel",
+  "titulo": "Ticket360: Domingo · 6 Dezembro · 20h Maurício Manieri Classics Tour Inesquecível Espaço Unimed São…",
+  "fonte": "Ticket360",
+  "link": "https://www.ticket360.com.br/evento/33543/ingressos-para-mauricio-manieri-classics-tour-inesquecivel",
+  "publicado": "2026-11-01T01:01:28.106277+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "fonte oficial: ticket360",
+  "detectadoEm": "2026-11-01T01:01:28.106277+00:00",
+  "enviado": false
  }
 ]
