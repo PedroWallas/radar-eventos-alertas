@@ -7900,5 +7900,18 @@
   "busca": "anuncia show em São Paulo",
   "detectadoEm": "2026-11-03T23:10:46.001870+00:00",
   "enviado": true
+ },
+ {
+  "id": "ed sheeran volta ao brasil em dezembro com a turne loop tour e show extra em sao",
+  "titulo": "Ed Sheeran volta ao Brasil em dezembro com a turnê Loop Tour e show extra em São Paulo",
+  "fonte": "Tribuna do Planalto",
+  "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPR1ZvUW9ORkwxb1ZCdzh1b21Fal82QUhUTlgtRllhWnFxX3g1LTVUSlBKNXFRT1ZHeGJhTU9qVnlEcnlKVGdkZUFyQndzQjRkVmhEazNZbm1IcDdMbjlCVnhBVWwxbVdyalhFcFpaS3NsdUtyWDdYbVFuZ0JGN2FYUXhR?oc=5",
+  "publicado": "2026-11-03T19:00:00+00:00",
+  "prioridade": "EVENTO",
+  "rotulo": "🎫 Venda, data extra ou mudança de data em SP",
+  "busca": "show Nubank Parque",
+  "detectadoEm": "2026-11-04T00:30:51.091449+00:00",
+  "tipoAlerta": "mudanca-data",
+  "enviado": true
  }
 ]
