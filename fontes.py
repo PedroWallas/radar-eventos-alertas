@@ -38,6 +38,11 @@ FONTES = [
     {"id": "interlagos", "nome": "Autódromo de Interlagos (agenda oficial)", "url": "https://prefeitura.sp.gov.br/web/autodromodeinterlagos/agenda",
      "tipo": "texto_datas", "alerta": True,
      "ignorar": r"track day|escola de pilotagem|cl[ií]nica|curso|treino livre|alpie|2drive"},
+    # Calendário de eventos da Visite São Paulo (convention bureau): vem pela API do WordPress, já com data, local e tipo.
+    # Só registro (alerta=False): o Claude revisa e leva ao Radar o que mexer na demanda.
+    {"id": "visitesp", "nome": "Visite São Paulo (calendário de eventos)", "url": "https://visitesaopaulo.com/calendario-eventos/",
+     "api": "https://visitesaopaulo.com/wp-json/wp/v2/evento?per_page=100&orderby=date&order=desc&_fields=id,slug,link,title,date,acf",
+     "tipo": "wp_evento", "alerta": False},
     {"id": "suhai", "nome": "Suhai Music Hall", "url": "https://www.suhaimusichall.com.br/",
      "padrao": r"suhaimusichall\.com\.br/evento/[a-z0-9-]+", "alerta": False},
     {"id": "tokiomarine", "nome": "Tokio Marine Hall", "url": "https://www.tokiomarinehall.com.br/",
@@ -127,6 +132,41 @@ def extrair_texto_datas(f, html):
     return list(itens.values())
 
 
+# Tipos da Visite SP que não mexem na demanda de hotel (reunião, workshop...)
+VISITESP_IGNORAR_TIPO = {"reuniao", "workshop", "encontro", "seminario", "premio", "outros"}
+
+
+def extrair_wp_evento(f):
+    """Lê os 100 eventos publicados mais recentemente e fica com os que ainda vão acontecer.
+
+    Shows só contam em locais grandes de SP (LOCAIS_SP); feiras, congressos, festivais e esportes contam em qualquer lugar.
+    shortcut: só a página 1 da API (100 mais novos); se o site passar de 100 publicações entre duas leituras, paginar.
+    """
+    hoje = datetime.now(timezone.utc).date().isoformat()
+    itens = {}
+    for e in json.loads(_ler(f["api"])):
+        a = e.get("acf") or {}
+        ini = a.get("data_inicio") or ""
+        fim = a.get("data_fim") or ini
+        if fim < ini:  # o site tem datas finais com o ano errado
+            fim = ini
+        if not ini or fim < hoje:
+            continue
+        tipo = _norm(a.get("tipo_evento"))
+        local = a.get("local") or ""
+        if tipo in VISITESP_IGNORAR_TIPO:
+            continue
+        if tipo == "show" and not any(l in _norm(local) for l in LOCAIS_SP):
+            continue
+        d = lambda s: f"{s[8:10]}/{s[5:7]}"  # noqa: E731
+        datas = d(ini) + (f" a {d(fim)}" if fim != ini else "")
+        nome = f"{_texto(e['title']['rendered'])} ({datas}) · {_texto(local)}"
+        chave = "visitesp:" + e["slug"]
+        itens[chave] = {"chave": chave, "nome": nome[:140], "link": e["link"],
+                        "contexto": " · ".join(x for x in (a.get("tipo_evento"), a.get("segmento"), a.get("promotor")) if x)[:200]}
+    return list(itens.values())
+
+
 def checar(estado_path, alertas, agora_iso, dry=False):
     """Lê as fontes. Devolve (novos_para_alerta, novos_registro, relatorio)."""
     estado = {}
@@ -137,8 +177,11 @@ def checar(estado_path, alertas, agora_iso, dry=False):
     vistos_grupo = {}
     for f in FONTES:
         try:
-            html = _ler(f["url"])
-            itens = extrair_texto_datas(f, html) if f.get("tipo") == "texto_datas" else extrair_links(f, html)
+            if f.get("tipo") == "wp_evento":
+                itens = extrair_wp_evento(f)
+            else:
+                html = _ler(f["url"])
+                itens = extrair_texto_datas(f, html) if f.get("tipo") == "texto_datas" else extrair_links(f, html)
         except Exception as e:  # noqa: BLE001
             rel.append({"fonte": f["id"], "erro": str(e)[:160]})
             continue

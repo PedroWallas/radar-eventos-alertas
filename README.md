@@ -21,6 +21,7 @@ A cada ~30 minutos o monitor também lê as agendas oficiais listadas em `fontes
 | Expo Center Norte (feiras e congressos) | sim |
 | Pro Magno Centro de Eventos | sim |
 | Autódromo de Interlagos (agenda da Prefeitura) | sim, sem track days e cursos |
+| Visite São Paulo (calendário de eventos, lido pela API do site; sem reunião/workshop e com shows só em locais grandes de SP) | não, só registro para o Claude |
 | Suhai Music Hall, Tokio Marine Hall, Ticket360, Uhuu, Clube do Ingresso (só locais grandes de SP) | não, só registro para o Claude |
 
 Ticketmaster, Eventim, Allianz Parque, Distrito Anhembi e São Paulo Expo bloqueiam leitura automática ou carregam a agenda por JavaScript: ficam na checagem manual da aba **Fontes** do Radar. Na primeira leitura de cada fonte o monitor só guarda a lista atual (não avisa). O que já foi visto fica em `estado/fontes_vistos.json`. Para testar a leitura de todas as fontes: Actions → Testar fontes oficiais → Run workflow.
