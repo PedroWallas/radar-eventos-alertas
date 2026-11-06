@@ -9497,5 +9497,17 @@
   "busca": "calendário de eventos São Paulo 2027",
   "detectadoEm": "2026-11-06T17:21:08.096295+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:promagno.com.br/evento/startse-ai-festival-2",
+  "titulo": "Pro Magno Centro de Eventos: Startse ai festival 2",
+  "fonte": "Pro Magno Centro de Eventos",
+  "link": "https://www.promagno.com.br/evento/startse-ai-festival-2/",
+  "publicado": "2026-11-06T18:11:14.163210+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: promagno",
+  "detectadoEm": "2026-11-06T18:11:14.163210+00:00",
+  "enviado": true
  }
 ]
