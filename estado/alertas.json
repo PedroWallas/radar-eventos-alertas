@@ -9329,5 +9329,29 @@
   "busca": "pré-venda ingressos São Paulo show",
   "detectadoEm": "2026-11-06T13:31:08.945341+00:00",
   "enviado": true
+ },
+ {
+  "id": "haas anuncia bradesco como novo parceiro bancario as vesperas do gp de sao paulo",
+  "titulo": "Haas anuncia Bradesco como novo parceiro bancário às vésperas do GP de São Paulo",
+  "fonte": "Terra",
+  "link": "https://news.google.com/rss/articles/CBMikAJBVV95cUxPdFMyUTdLYWo5TTJxSVZBczBqZTRrZmxWUWdRWVlyNERYekd5YktzLWsycURHMjFCVHRKNllpZ1lDLV8zcEFocVB5LWxTZnFvcjhqTVpCRTdVSWhTWWxNTGJFRE01WWlXVjVsakVHQzFaV1FCSnRibGhFLXo5SGVtVkRXS2FfN2ZZa2tDYUVZYmhtVWdzby1DM2FqcGlnV3JvWm9oY0xSNGpvd25HWE1ZVHBPR1dMWnNoNW9nbFViWHFic2Etb1BoUzdOcTBUUWRteFlOVWYzVEZpSFVBM0lVaDRka1ZIU1pGMlhGMTUyVURLZm9qR2Jua1RGQlBqS1ZGeFlBZVVKcXdEMW5nMHBfUw?oc=5",
+  "publicado": "2026-11-05T21:17:47+00:00",
+  "prioridade": "EVENTO",
+  "rotulo": "🎫 Evento acompanhado pelo Radar",
+  "busca": "anuncia show em São Paulo",
+  "detectadoEm": "2026-11-06T13:40:41.525821+00:00",
+  "enviado": true
+ },
+ {
+  "id": "fonte:promagno.com.br/evento/rental-fair-by-7a-edicao-imersao-para-locadoras",
+  "titulo": "Pro Magno Centro de Eventos: Rental fair by 7a edicao imersao para locadoras",
+  "fonte": "Pro Magno Centro de Eventos",
+  "link": "https://www.promagno.com.br/evento/rental-fair-by-7a-edicao-imersao-para-locadoras/",
+  "publicado": "2026-11-06T13:41:14.477035+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: promagno",
+  "detectadoEm": "2026-11-06T13:41:14.477035+00:00",
+  "enviado": true
  }
 ]
