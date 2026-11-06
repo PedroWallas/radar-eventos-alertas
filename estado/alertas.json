@@ -9413,5 +9413,17 @@
   "busca": "fonte oficial: promagno",
   "detectadoEm": "2026-11-06T14:51:26.029543+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:promagno.com.br/evento/congresso-de-gestao-educacional-para-lideres-geduc",
+  "titulo": "Pro Magno Centro de Eventos: Congresso de gestao educacional para lideres geduc",
+  "fonte": "Pro Magno Centro de Eventos",
+  "link": "https://www.promagno.com.br/evento/congresso-de-gestao-educacional-para-lideres-geduc/",
+  "publicado": "2026-11-06T15:01:26.479607+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: promagno",
+  "detectadoEm": "2026-11-06T15:01:26.479607+00:00",
+  "enviado": true
  }
 ]
