@@ -9509,5 +9509,17 @@
   "busca": "fonte oficial: promagno",
   "detectadoEm": "2026-11-06T18:11:14.163210+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:promagno.com.br/evento/flexo-labels-experience",
+  "titulo": "Pro Magno Centro de Eventos: Flexo labels experience",
+  "fonte": "Pro Magno Centro de Eventos",
+  "link": "https://www.promagno.com.br/evento/flexo-labels-experience/",
+  "publicado": "2026-11-06T18:51:27.321242+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: promagno",
+  "detectadoEm": "2026-11-06T18:51:27.321242+00:00",
+  "enviado": true
  }
 ]
