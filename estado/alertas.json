@@ -9617,5 +9617,17 @@
   "busca": "fonte oficial: promagno",
   "detectadoEm": "2026-11-06T20:11:15.656920+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:promagno.com.br/evento/14o-congresso-internacional-de-compliance",
+  "titulo": "Pro Magno Centro de Eventos: 14o congresso internacional de compliance",
+  "fonte": "Pro Magno Centro de Eventos",
+  "link": "https://www.promagno.com.br/evento/14o-congresso-internacional-de-compliance/",
+  "publicado": "2026-11-06T20:21:32.131556+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: promagno",
+  "detectadoEm": "2026-11-06T20:21:32.131556+00:00",
+  "enviado": true
  }
 ]
