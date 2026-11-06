@@ -9557,5 +9557,29 @@
   "busca": "feira de hotelaria São Paulo",
   "detectadoEm": "2026-11-06T19:20:47.705759+00:00",
   "enviado": true
+ },
+ {
+  "id": "moet chandon e posh club festa da formula 1 em sp",
+  "titulo": "Moët & Chandon e Posh Club: festa da Fórmula 1 em SP",
+  "fonte": "EuQueroInvestir",
+  "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPZXpGWlFCd0VIT0w2LVVjWnM1WEgxR2xLUUpYNzZXbE1sRzBHUlozcDVUY2M4Rm1kMHB4b2dyTlRQQWFLRmpHaHBBa0FQTVVMdEN2cnF6b1EtSFpZS3hJc1dNamJDdk5sYTgtWGQydFZSLTB3dlNYTm83Umtic1ZUMEVLRG5Wb3k0VTRPbzc5R21VNzZha1M0?oc=5",
+  "publicado": "2026-11-06T13:17:58+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "ingressos à venda show São Paulo",
+  "detectadoEm": "2026-11-06T19:31:07.622460+00:00",
+  "enviado": true
+ },
+ {
+  "id": "fonte:promagno.com.br/evento/expomilhas-2",
+  "titulo": "Pro Magno Centro de Eventos: Expomilhas 2",
+  "fonte": "Pro Magno Centro de Eventos",
+  "link": "https://www.promagno.com.br/evento/expomilhas-2/",
+  "publicado": "2026-11-06T19:31:25.014942+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: promagno",
+  "detectadoEm": "2026-11-06T19:31:25.014942+00:00",
+  "enviado": true
  }
 ]
