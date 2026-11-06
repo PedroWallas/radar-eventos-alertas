@@ -9425,5 +9425,17 @@
   "busca": "fonte oficial: promagno",
   "detectadoEm": "2026-11-06T15:01:26.479607+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:promagno.com.br/evento/trade-connection-4",
+  "titulo": "Pro Magno Centro de Eventos: Trade connection 4",
+  "fonte": "Pro Magno Centro de Eventos",
+  "link": "https://www.promagno.com.br/evento/trade-connection-4/",
+  "publicado": "2026-11-06T15:31:27.349329+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: promagno",
+  "detectadoEm": "2026-11-06T15:31:27.349329+00:00",
+  "enviado": true
  }
 ]
