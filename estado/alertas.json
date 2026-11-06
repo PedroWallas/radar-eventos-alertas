@@ -9389,5 +9389,29 @@
   "busca": "show gratuito Avenida Paulista",
   "detectadoEm": "2026-11-06T14:40:37.025866+00:00",
   "enviado": true
+ },
+ {
+  "id": "sp tem tributo a sabotage shows gratuitos e feiras neste fim de semana",
+  "titulo": "SP tem tributo a Sabotage, shows gratuitos e feiras neste fim de semana",
+  "fonte": "UOL",
+  "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNRXl5UEVfdGFib0FvZWdhTWhnaTRUMWJBSnNXWnN4LWZlVy0xTTBYZDBqWkFIanU5V3ZKMk9lRWxhQ0NESTJWR3dSUnZNUFhGSkdTdi1Dd1RGSVZLaE4yZzZNZElQdy16QjZ3M1dydnQ4Qlc1TlNlaUV0LTk5VlFlVHhlRlhtWTN6UVVDemF6ZmhxeVItbDRBT3lBYkZwZnhuTTI4VmFYeG05UUZ0RzNQZDYxWE5lM3drdXdIVUpCZm5pTldSUU5WUWRPNVE?oc=5",
+  "publicado": "2026-11-06T14:41:35+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "show gratuito Avenida Paulista",
+  "detectadoEm": "2026-11-06T14:50:36.095691+00:00",
+  "enviado": true
+ },
+ {
+  "id": "fonte:promagno.com.br/evento/10o-congresso-brasileiro-de-harmonizacao-facial-sbti",
+  "titulo": "Pro Magno Centro de Eventos: 10o congresso brasileiro de harmonizacao facial sbti",
+  "fonte": "Pro Magno Centro de Eventos",
+  "link": "https://www.promagno.com.br/evento/10o-congresso-brasileiro-de-harmonizacao-facial-sbti/",
+  "publicado": "2026-11-06T14:51:26.029543+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: promagno",
+  "detectadoEm": "2026-11-06T14:51:26.029543+00:00",
+  "enviado": true
  }
 ]
