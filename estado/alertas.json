@@ -9605,5 +9605,17 @@
   "busca": "fonte oficial: promagno",
   "detectadoEm": "2026-11-06T19:41:14.797361+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:promagno.com.br/evento/cbtd",
+  "titulo": "Pro Magno Centro de Eventos: Cbtd",
+  "fonte": "Pro Magno Centro de Eventos",
+  "link": "https://www.promagno.com.br/evento/cbtd/",
+  "publicado": "2026-11-06T20:11:15.656920+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: promagno",
+  "detectadoEm": "2026-11-06T20:11:15.656920+00:00",
+  "enviado": true
  }
 ]
