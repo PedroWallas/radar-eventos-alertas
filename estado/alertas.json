@@ -9941,5 +9941,17 @@
   "busca": "show Mercado Livre Arena Pacaembu",
   "detectadoEm": "2026-11-07T22:00:50.788826+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:ticket360.com.br/evento/33934/ingressos-para-carol-biazin-odeio-muito-a-despedida",
+  "titulo": "Ticket360: Domingo · 20 Dezembro · 20h Carol Biazin Odeio Muito a Despedida Espaço Unimed São Paulo…",
+  "fonte": "Ticket360",
+  "link": "https://www.ticket360.com.br/evento/33934/ingressos-para-carol-biazin-odeio-muito-a-despedida",
+  "publicado": "2026-11-07T23:31:27.284553+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "fonte oficial: ticket360",
+  "detectadoEm": "2026-11-07T23:31:27.284553+00:00",
+  "enviado": false
  }
 ]
