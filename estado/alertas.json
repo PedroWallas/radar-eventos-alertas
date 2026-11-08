@@ -10062,5 +10062,17 @@
   "detectadoEm": "2026-11-08T12:10:41.026972+00:00",
   "tipoAlerta": "mudanca-data",
   "enviado": true
+ },
+ {
+  "id": "turne de bandas porto alegrenses esgota ingressos com show em sao paulo laborato",
+  "titulo": "Turnê de bandas porto-alegrenses esgota ingressos com show em São Paulo - Laboratório de Jornalismo",
+  "fonte": "Laboratório de Jornalismo - PUCRS",
+  "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOYnpSMWVRenJiNG9ONU9OMUpjMEcyVV8zVFJYenZxTXlrb1NNRFJIVi12cktEcGRmTy1MR1Flb2ZPc3JvazJuUEJ0c2U5RC1HT0IzQjAyRmdONnhtWFlvRXNQeHprVm5Yc3kxOEthVVVKckRERzlLTFJRalRzdWZxQzhpX0dyUTJXWXZub2t0QzlvRC1rMzJReThreUFDYUpQSDE5Q2QwR2ZLaEJ1WWctUnh3?oc=5",
+  "publicado": "2026-11-06T23:18:00+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "ingressos à venda show São Paulo",
+  "detectadoEm": "2026-11-08T13:31:07.381441+00:00",
+  "enviado": true
  }
 ]
