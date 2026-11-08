@@ -10049,5 +10049,18 @@
   "busca": "show Suhai Music Hall",
   "detectadoEm": "2026-11-08T12:00:58.654924+00:00",
   "enviado": true
+ },
+ {
+  "id": "shows sao cancelados no rio e no interior de sp por causa da chuva",
+  "titulo": "Shows são cancelados no Rio e no interior de SP por causa da chuva",
+  "fonte": "UOL",
+  "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQUklwdWJnVU56eVFfdF9YZWNwZVl5Y0Z0TGNiNHFaQ1RZcXNFYTVzZW82X0l6OUtSNXBPQTk3OEc2VF9DNmZXTWlWOEFKcDh1dnVQcUxRY2xrWkxsODlhelNla1NiaGhxa2d3SzE5eWUtNUNiaEFRbHJTWHNOeElKbFpnZkdjNGFJR1RQYkM2SjExYnhCVHdlZ0RqcmRLSjVvVEl5ZmF6RmhSUjAxdW5IUEhqd0xSUQ?oc=5",
+  "publicado": "2026-11-08T07:13:34+00:00",
+  "prioridade": "EVENTO",
+  "rotulo": "🎫 Venda, data extra ou mudança de data em SP",
+  "busca": "anuncia show em São Paulo",
+  "detectadoEm": "2026-11-08T12:10:41.026972+00:00",
+  "tipoAlerta": "mudanca-data",
+  "enviado": true
  }
 ]
