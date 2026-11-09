@@ -10627,5 +10627,17 @@
   "busca": "agências de viagem evento São Paulo",
   "detectadoEm": "2026-11-09T19:51:06.232249+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:primavera sound 2026|05/12/26",
+  "titulo": "Autódromo de Interlagos (agenda oficial): Primavera Sound 2026 (05/12/26)",
+  "fonte": "Autódromo de Interlagos (agenda oficial)",
+  "link": "https://prefeitura.sp.gov.br/web/autodromodeinterlagos/agenda",
+  "publicado": "2026-11-09T20:01:29.077259+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: interlagos",
+  "detectadoEm": "2026-11-09T20:01:29.077259+00:00",
+  "enviado": true
  }
 ]
