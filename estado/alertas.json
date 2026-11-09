@@ -10519,5 +10519,17 @@
   "detectadoEm": "2026-11-09T17:10:43.801060+00:00",
   "tipoAlerta": "mudanca-data",
   "enviado": true
+ },
+ {
+  "id": "fonte:ticketmaster.com.br/event/capital-inicial",
+  "titulo": "Live Nation Brasil: Capital Inicial 45 Anos Pré-Venda Superfãs: 11/11 | Venda Geral: 12/11",
+  "fonte": "Live Nation Brasil",
+  "link": "https://www.ticketmaster.com.br/event/capital-inicial",
+  "publicado": "2026-11-09T17:21:25.577570+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: livenation",
+  "detectadoEm": "2026-11-09T17:21:25.577570+00:00",
+  "enviado": true
  }
 ]
