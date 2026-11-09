@@ -10506,5 +10506,18 @@
   "busca": "pré-venda ingressos São Paulo show",
   "detectadoEm": "2026-11-09T17:01:12.167705+00:00",
   "enviado": true
+ },
+ {
+  "id": "chuvas cancelam shows no rio e no interior de sao paulo",
+  "titulo": "Chuvas cancelam shows no Rio e no interior de São Paulo",
+  "fonte": "Bem Paraná",
+  "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPeW9xbHYwR2tXZjBRTWU1NmJ5OEpCbFJSUWZOaE1tZDc1S1Viek0yM1ExeW1UZmIwZG44WFRwUHhCTlBaWFdhcDF3Y3RRTHY1em54V0cwRktnc0pOZEEtTHBDNFZieGJPTG5WSUFheUdNR2hEWlhVVkNRVlhKQU5zU3pmWDZlZExJcmJva2V1X3VwLUQzLTdQTE03dEp6cHlKanJr0gGoAUFVX3lxTE91dllKbk12ZW9mdFMyUTJyZUh4NEptOEotMEVsSEVmLTNwUEw1MDh1TElSbHRoWmJGSVE5RWc5YVo3LW1XMzJjMWRXbWlJeGY5ZFM5YlQ5SHUwVHFmWTdIeDZ1N3VwNnluYV9mdEVxekxVbXFCU2ZHY1A0Zk1pNWItOVlnWXRYYnBESzhfRWhHTm5lNHI2ZTgzc1VZbDlxSjVBQXlKYWlYag?oc=5",
+  "publicado": "2026-11-08T12:50:00+00:00",
+  "prioridade": "EVENTO",
+  "rotulo": "🎫 Venda, data extra ou mudança de data em SP",
+  "busca": "anuncia show em São Paulo",
+  "detectadoEm": "2026-11-09T17:10:43.801060+00:00",
+  "tipoAlerta": "mudanca-data",
+  "enviado": true
  }
 ]
