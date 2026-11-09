@@ -162,7 +162,12 @@ def extrair_wp_evento(f):
         datas = d(ini) + (f" a {d(fim)}" if fim != ini else "")
         nome = f"{_texto(e['title']['rendered'])} ({datas}) · {_texto(local)}"
         chave = "visitesp:" + e["slug"]
-        itens[chave] = {"chave": chave, "nome": nome[:140], "link": e["link"],
+        # Campos estruturados vão junto no alerta: o Worker do Radar cria o card "A confirmar" sem interpretar texto.
+        evento = {"nome": _texto(e["title"]["rendered"])[:140], "inicio": ini[:10], "fim": fim[:10],
+                  "local": _texto(local)[:140], "tipo": a.get("tipo_evento") or ""}
+        if str(a.get("num_participantes") or "").isdigit() and int(a["num_participantes"]) > 0:
+            evento["participantes"] = int(a["num_participantes"])
+        itens[chave] = {"chave": chave, "nome": nome[:140], "link": e["link"], "evento": evento,
                         "contexto": " · ".join(x for x in (a.get("tipo_evento"), a.get("segmento"), a.get("promotor")) if x)[:200]}
     return list(itens.values())
 
@@ -202,6 +207,8 @@ def checar(estado_path, alertas, agora_iso, dry=False):
                    "link": i["link"], "publicado": agora_iso, "prioridade": "FONTE" if f["alerta"] else "REGISTRO",
                    "rotulo": "🆕 Nova data em fonte oficial" if f["alerta"] else "Registro (sem aviso)",
                    "busca": "fonte oficial: " + f["id"], "detectadoEm": agora_iso}
+            if i.get("evento"):
+                reg["evento"] = i["evento"]
             (novos_alerta if f["alerta"] else novos_reg).append(reg)
         vistos_grupo[g] = conhecidos
         estado[g] = sorted(conhecidos)[-3000:]
