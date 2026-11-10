@@ -10843,5 +10843,17 @@
   "busca": "anuncia show em São Paulo",
   "detectadoEm": "2026-11-10T13:40:41.656932+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:ticketmaster.com.br/event/till-lindemann",
+  "titulo": "Live Nation Brasil: Till Lindemann World Tour 2027 Pré-Venda Tokio Marine: 11/11 | Venda Geral: 12/11",
+  "fonte": "Live Nation Brasil",
+  "link": "https://www.ticketmaster.com.br/event/till-lindemann",
+  "publicado": "2026-11-10T15:11:16.230989+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: livenation",
+  "detectadoEm": "2026-11-10T15:11:16.230989+00:00",
+  "enviado": true
  }
 ]
