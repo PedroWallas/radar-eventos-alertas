@@ -12,7 +12,9 @@ import re
 import ssl
 import unicodedata
 import urllib.request
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
+from html.parser import HTMLParser
+from urllib.parse import urljoin
 
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
       "Chrome/126.0 Safari/537.36")
@@ -36,8 +38,10 @@ FONTES = [
     {"id": "promagno", "nome": "Pro Magno Centro de Eventos", "url": "https://www.promagno.com.br/centro-de-eventos/agenda/",
      "padrao": r"promagno\.com\.br/evento/[a-z0-9-]+", "alerta": True, "ignorar": r"evento-(?:corporativo|social)-privado"},
     {"id": "interlagos", "nome": "Autódromo de Interlagos (agenda oficial)", "url": "https://prefeitura.sp.gov.br/web/autodromodeinterlagos/agenda",
-     "tipo": "texto_datas", "alerta": True,
+     "tipo": "interlagos_agenda", "alerta": True,
      "ignorar": r"track day|escola de pilotagem|cl[ií]nica|curso|treino livre|alpie|2drive"},
+    {"id": "saopauloexpo", "nome": "São Paulo Expo", "url": "https://saopauloexpo.com.br/pt/agenda-de-eventos/",
+     "tipo": "jsonld_evento", "alerta": True},
     # Calendário de eventos da Visite São Paulo (convention bureau): vem pela API do WordPress, já com data, local e tipo.
     # Só registro (alerta=False): o Claude revisa e leva ao Radar o que mexer na demanda.
     {"id": "visitesp", "nome": "Visite São Paulo (calendário de eventos)", "url": "https://visitesaopaulo.com/calendario-eventos/",
@@ -132,6 +136,123 @@ def extrair_texto_datas(f, html):
     return list(itens.values())
 
 
+class _AgendaInterlagos(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.nivel = 0
+        self.bloco = None
+        self.campos = []
+        self.blocos = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag != "div":
+            return
+        self.nivel += 1
+        classes = dict(attrs).get("class", "").split()
+        if self.bloco is None and "agenda-evento" in classes:
+            self.bloco = {"nivel": self.nivel, "titulo": [], "inicial": [], "final": []}
+        if self.bloco is not None:
+            for classe, campo in (("agenda-evento-titulo", "titulo"), ("agenda-evento-data-inicial", "inicial"), ("agenda-evento-data-final", "final")):
+                if classe in classes:
+                    self.campos.append((self.nivel, campo))
+
+    def handle_data(self, data):
+        if self.bloco is not None and self.campos:
+            self.bloco[self.campos[-1][1]].append(data)
+
+    def handle_endtag(self, tag):
+        if tag != "div":
+            return
+        self.campos = [(nivel, campo) for nivel, campo in self.campos if nivel < self.nivel]
+        if self.bloco is not None and self.bloco["nivel"] == self.nivel:
+            self.blocos.append(self.bloco)
+            self.bloco = None
+        self.nivel -= 1
+
+
+def _data_iso(valor):
+    if not isinstance(valor, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", valor[:10]):
+        return None
+    try:
+        return date.fromisoformat(valor[:10]).isoformat()
+    except ValueError:
+        return None
+
+
+def _data_interlagos(valor):
+    if not re.fullmatch(r"\d{2}/\d{2}/(?:\d{4}|\d{2})", valor):
+        return None
+    dia, mes, ano = valor.split("/")
+    return _data_iso(f"{('20' + ano) if len(ano) == 2 else ano}-{mes}-{dia}")
+
+
+def extrair_interlagos_agenda(f, html):
+    pagina = _AgendaInterlagos()
+    pagina.feed(html)
+    pagina.close()
+    if not pagina.blocos:
+        return extrair_texto_datas(f, html)
+    itens = {}
+    for bloco in pagina.blocos:
+        nome, inicial, final = (_texto(" ".join(bloco[campo])) for campo in ("titulo", "inicial", "final"))
+        if not 3 <= len(nome) <= 120 or (f.get("ignorar") and re.search(f["ignorar"], nome, re.I)):
+            continue
+        inicio = _data_interlagos(inicial)
+        if not inicio:
+            continue
+        fim = _data_interlagos(final) or inicio
+        if fim < inicio:
+            fim = inicio
+        chave = _norm(nome) + "|" + inicial
+        datas = inicial + (" a " + final if final else "")
+        itens[chave] = {"chave": chave, "nome": f"{nome} ({datas})", "link": f["url"], "contexto": f"{nome} {datas}"[:200],
+                        "evento": {"nome": nome, "inicio": inicio, "fim": fim, "local": "Autódromo de Interlagos", "tipo": ""}}
+    return list(itens.values())
+
+
+def _eventos_jsonld(obj):
+    if isinstance(obj, list):
+        for item in obj:
+            yield from _eventos_jsonld(item)
+    elif isinstance(obj, dict):
+        tipos = obj.get("@type", [])
+        if isinstance(tipos, str):
+            tipos = [tipos]
+        if isinstance(tipos, list) and any(isinstance(t, str) and t.endswith("Event") for t in tipos):
+            yield obj
+        yield from _eventos_jsonld(obj.get("@graph"))
+
+
+def extrair_jsonld_evento(f, html):
+    hoje = datetime.now(timezone.utc).date().isoformat()
+    itens = {}
+    for attrs, conteudo in re.findall(r"<script\b([^>]*)>(.*?)</script\s*>", html, re.S | re.I):
+        if not re.search(r'''\btype\s*=\s*(["'])application/ld\+json\1''', attrs, re.I):
+            continue
+        try:
+            obj = json.loads(conteudo)
+        except (ValueError, TypeError):
+            continue
+        for e in _eventos_jsonld(obj):
+            nome = _texto(e.get("name"))[:140] if isinstance(e.get("name"), str) else ""
+            inicio = _data_iso(e.get("startDate"))
+            if not nome or not inicio:
+                continue
+            fim = _data_iso(e.get("endDate")) or inicio
+            if fim < inicio:
+                fim = inicio
+            if fim < hoje:
+                continue
+            local = e.get("location")
+            local = _texto(local.get("name")) if isinstance(local, dict) and isinstance(local.get("name"), str) else ""
+            local = "São Paulo Expo" + (" · " + local if local else "")
+            link = urljoin(f["url"], e["url"]) if isinstance(e.get("url"), str) and e["url"] else f["url"]
+            chave = f["id"] + "|" + _norm(nome) + "|" + inicio
+            itens[chave] = {"chave": chave, "nome": nome, "link": link, "contexto": local[:200],
+                            "evento": {"nome": nome, "inicio": inicio, "fim": fim, "local": local, "tipo": ""}}
+    return list(itens.values())
+
+
 # Tipos da Visite SP que não mexem na demanda de hotel (reunião, workshop...)
 VISITESP_IGNORAR_TIPO = {"reuniao", "workshop", "encontro", "seminario", "premio", "outros"}
 
@@ -186,7 +307,9 @@ def checar(estado_path, alertas, agora_iso, dry=False):
                 itens = extrair_wp_evento(f)
             else:
                 html = _ler(f["url"])
-                itens = extrair_texto_datas(f, html) if f.get("tipo") == "texto_datas" else extrair_links(f, html)
+                extrator = {"texto_datas": extrair_texto_datas, "interlagos_agenda": extrair_interlagos_agenda,
+                            "jsonld_evento": extrair_jsonld_evento}.get(f.get("tipo"), extrair_links)
+                itens = extrator(f, html)
         except Exception as e:  # noqa: BLE001
             rel.append({"fonte": f["id"], "erro": str(e)[:160]})
             continue
