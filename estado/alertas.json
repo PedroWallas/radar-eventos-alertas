@@ -11599,5 +11599,17 @@
   "busca": "festival Interlagos 2027",
   "detectadoEm": "2026-11-12T21:00:54.765682+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:uhuu.com/evento/sp/sao-paulo/corrida-das-blogueiras-17129",
+  "titulo": "Uhuu (São Paulo): São Paulo/SP Corrida das Blogueiras Qua 13 JAN São Paulo/SP Corrida das Blogueiras Vibra",
+  "fonte": "Uhuu (São Paulo)",
+  "link": "https://uhuu.com/evento/sp/sao-paulo/corrida-das-blogueiras-17129",
+  "publicado": "2026-11-12T21:31:28.664477+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "fonte oficial: uhuu-sp",
+  "detectadoEm": "2026-11-12T21:31:28.664477+00:00",
+  "enviado": false
  }
 ]
