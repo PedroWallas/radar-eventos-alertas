@@ -12103,5 +12103,17 @@
   "busca": "ingressos à venda show São Paulo",
   "detectadoEm": "2026-11-14T19:01:06.921274+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:ticket360.com.br/evento/34033/ingressos-para-livinho-fazer-falta-tour",
+  "titulo": "Ticket360: Quarta · 23 Dezembro · 21h Livinho Fazer Falta Tour Espaço Unimed São Paulo / SP",
+  "fonte": "Ticket360",
+  "link": "https://www.ticket360.com.br/evento/34033/ingressos-para-livinho-fazer-falta-tour",
+  "publicado": "2026-11-14T19:21:29.097603+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "fonte oficial: ticket360",
+  "detectadoEm": "2026-11-14T19:21:29.097603+00:00",
+  "enviado": false
  }
 ]
