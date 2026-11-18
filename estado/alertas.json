@@ -13135,5 +13135,17 @@
   "busca": "agências de viagem evento São Paulo",
   "detectadoEm": "2026-11-18T17:50:59.011477+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:expocenternorte.com.br/eventos/marketplace-trade-show",
+  "titulo": "Expo Center Norte: Marketplace Trade Show 2026 O Marketplace Trade Show é a 1ª Feira de Comércio Digital,…",
+  "fonte": "Expo Center Norte",
+  "link": "https://www.expocenternorte.com.br/eventos/marketplace-trade-show",
+  "publicado": "2026-11-18T18:11:10.990698+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: expocenternorte",
+  "detectadoEm": "2026-11-18T18:11:10.990698+00:00",
+  "enviado": true
  }
 ]
