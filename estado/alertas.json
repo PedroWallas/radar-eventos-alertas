@@ -13543,5 +13543,41 @@
   "busca": "fonte oficial: livenation",
   "detectadoEm": "2026-11-19T18:21:28.170925+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:suhaimusichall.com.br/evento/europe",
+  "titulo": "Suhai Music Hall: sáb 10 abr Europe",
+  "fonte": "Suhai Music Hall",
+  "link": "https://suhaimusichall.com.br/evento/europe/",
+  "publicado": "2026-11-19T18:31:29.304264+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "fonte oficial: suhai",
+  "detectadoEm": "2026-11-19T18:31:29.304264+00:00",
+  "enviado": false
+ },
+ {
+  "id": "fonte:ticketmaster.com.br/event/rick-wakeman-tokio-marine-hall",
+  "titulo": "Tokio Marine Hall: Rick wakeman tokio marine hall",
+  "fonte": "Tokio Marine Hall",
+  "link": "https://www.ticketmaster.com.br/event/rick-wakeman-tokio-marine-hall",
+  "publicado": "2026-11-19T18:31:29.304264+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "fonte oficial: tokiomarine",
+  "detectadoEm": "2026-11-19T18:31:29.304264+00:00",
+  "enviado": false
+ },
+ {
+  "id": "fonte:ticketmaster.com.br/event/vg-a-perfect-circle-puscifer",
+  "titulo": "Live Nation Brasil: A Perfect Circle",
+  "fonte": "Live Nation Brasil",
+  "link": "https://www.ticketmaster.com.br/event/vg-a-perfect-circle-puscifer",
+  "publicado": "2026-11-19T18:31:29.304264+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: livenation",
+  "detectadoEm": "2026-11-19T18:31:29.304264+00:00",
+  "enviado": true
  }
 ]
