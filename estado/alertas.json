@@ -13615,5 +13615,17 @@
   "busca": "feira São Paulo Expo 2027",
   "detectadoEm": "2026-11-19T19:10:47.042664+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:ticketmaster.com.br/event/corde-vita-tokio-marine-hall",
+  "titulo": "Tokio Marine Hall: Corde vita tokio marine hall",
+  "fonte": "Tokio Marine Hall",
+  "link": "https://www.ticketmaster.com.br/event/corde-vita-tokio-marine-hall",
+  "publicado": "2026-11-19T19:31:26.682153+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "fonte oficial: tokiomarine",
+  "detectadoEm": "2026-11-19T19:31:26.682153+00:00",
+  "enviado": false
  }
 ]
