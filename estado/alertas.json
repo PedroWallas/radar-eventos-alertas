@@ -13519,5 +13519,29 @@
   "busca": "megashow Avenida Paulista",
   "detectadoEm": "2026-11-19T17:40:35.141605+00:00",
   "enviado": true
+ },
+ {
+  "id": "sao paulo festival mario de andrade tera feira de livros e shows gratuitos de ne",
+  "titulo": "São Paulo: Festival Mário de Andrade terá feira de livros e shows gratuitos de Negra Li e Evinha",
+  "fonte": "Viagem e Turismo",
+  "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPV3cxSWF2RE5IckZfQ2dteDNtWlB3Rm1wT2NmS3FYamk2ZHR0b3dCV1RTY2h6cVU1VktuVXhJRXFRXzlMYmUxQjl2dEhPcWIwVUp5bjQwckhpTktIeFRTSGgxczNRcXVMYzB3dktKTmpJOW10WThncWFwTHZZZ2h1T0tUVWVKaHJpT3NGcGJlWEh2TmRLWElLdFUwWVNXQ25ZZTZkN1hqdVpwcnktaFRpTXRjQ1Jsalc5UDFKTWV3eEJRZ09LdUgzb3JfY3JyOXFpYkR2RC1n?oc=5",
+  "publicado": "2026-11-19T18:06:00+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "agências de viagem evento São Paulo",
+  "detectadoEm": "2026-11-19T18:20:59.759429+00:00",
+  "enviado": true
+ },
+ {
+  "id": "fonte:ticketmaster.com.br/event/ca7riel-e-paco-amoroso",
+  "titulo": "Live Nation Brasil: CA7RIEL & Paco Amoroso FREE SPIRITS World Tour",
+  "fonte": "Live Nation Brasil",
+  "link": "https://www.ticketmaster.com.br/event/ca7riel-e-paco-amoroso",
+  "publicado": "2026-11-19T18:21:28.170925+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: livenation",
+  "detectadoEm": "2026-11-19T18:21:28.170925+00:00",
+  "enviado": true
  }
 ]
