@@ -14083,5 +14083,17 @@
   "busca": "show único no Brasil São Paulo",
   "detectadoEm": "2026-11-20T15:40:45.019619+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:suhaimusichall.com.br/evento/reserva-sertaneja",
+  "titulo": "Suhai Music Hall: dom 13 dez Reserva Sertaneja",
+  "fonte": "Suhai Music Hall",
+  "link": "https://suhaimusichall.com.br/evento/reserva-sertaneja/",
+  "publicado": "2026-11-20T17:01:24.556937+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "fonte oficial: suhai",
+  "detectadoEm": "2026-11-20T17:01:24.556937+00:00",
+  "enviado": false
  }
 ]
