@@ -14551,5 +14551,18 @@
   "busca": "Avenida Paulista evento 2027",
   "detectadoEm": "2026-11-22T15:21:04.818558+00:00",
   "enviado": true
+ },
+ {
+  "id": "new order sao paulo 23 11 2026 data extra",
+  "titulo": "New Order | São Paulo | 23/11/2026 (Data Extra)",
+  "fonte": "Ticketmaster Brasil",
+  "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1oTG0wNkQtM1phQk1wVkZ5dEN1Ql9fM2FqWWxCU2pIeVlNQ2JKdVNHeXQxUXZtZnpiOGJYQmhDUlFmMkVBT0NVY2FBTnVWbVFoWVMyTkp0dHc0bVFHZERndDZ6UUYtMVZnZnc?oc=5",
+  "publicado": "2026-11-22T15:43:35+00:00",
+  "prioridade": "EVENTO",
+  "rotulo": "🎫 Venda, data extra ou mudança de data em SP",
+  "busca": "pré-venda ingressos São Paulo show",
+  "detectadoEm": "2026-11-22T16:01:07.128259+00:00",
+  "tipoAlerta": "mudanca-data",
+  "enviado": true
  }
 ]
