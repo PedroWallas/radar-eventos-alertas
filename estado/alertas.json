@@ -14684,5 +14684,30 @@
   "busca": "show único no Brasil São Paulo",
   "detectadoEm": "2026-11-23T07:30:45.482997+00:00",
   "enviado": true
+ },
+ {
+  "id": "epica anuncia show extra em sao paulo apos esgotar ingressos da primeira apresen",
+  "titulo": "EPICA anuncia show extra em São Paulo após esgotar ingressos da primeira apresentação",
+  "fonte": "Wikimetal",
+  "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE5hTWhqeGpoZ2F5dS10OG1vRWpreFpoYlVMMFhMMFZRVUFHbVNBbWVmZXlHX3NIcUNuTjRJMXVERllFYzhaWXBkYXVQQUl5VlVfU1ZOajR5VGY1aDJKWW9LczB6cXp2WHJZRTFXSzBMU0Znd9IBd0FVX3lxTE8zT3pDNGxOQ19mOEpwUV9mQ1RmOGs4b3l2QjZ0TmxETGhRTGZURDk0R1VsU2NNMnJUYzVTYXZlYURIeWxXQ2tCQkQwUzc1ZVZXU1FDMUZMbjd0R1Z2TDhKMDVJWks1cFlhTEVfajBDX2w3a21sUzBF?oc=5",
+  "publicado": "2026-11-23T13:02:24+00:00",
+  "prioridade": "EVENTO",
+  "rotulo": "🎫 Venda, data extra ou mudança de data em SP",
+  "busca": "anuncia show em São Paulo",
+  "detectadoEm": "2026-11-23T13:10:47.230621+00:00",
+  "tipoAlerta": "mudanca-data",
+  "enviado": true
+ },
+ {
+  "id": "alexisonfire consagra sua trajetoria no brasil com show historico em sao paulo",
+  "titulo": "Alexisonfire consagra sua trajetória no Brasil com show histórico em São Paulo",
+  "fonte": "Wikimetal",
+  "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOMXV0OTNWV2JUYkFueGxzeUtzQXdfV2ZUeTJFZHVENzg3aWJJeVowaXlPclhza2JqS2didEE1U2NlUHprZ3hZVWZLa0VkQUIxWkhRWllwUHAzaVYtV0pzLWRoZkZYSDBNWUdPZFIzR3dsVjhnaHZaMTVOVEtGVmd1YkNzMzBxT1lMT1hJOW1Dd0FIUjFzM0xnM2dB0gGfAUFVX3lxTE9LSm5VUnFsOFIteDNoM1pNN0tOSXNLaEl3ZmdWNTJocEFIX3diWm5Tb0dtdGIyRERsSTg5UHlKQ3lQczJJNkF4R3ZUWkVXVUtFNFdpaUp2Z1FwVlJ3WG0yYWhwSUdPT1NhX21Za3RSZjBGUXQ1SkpFM3ptRENjSGZ0TGdfMmxkMkhON2hndVU3UDR6NWpEZjhqWXRCR1VhTQ?oc=5",
+  "publicado": "2026-11-23T13:00:30+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "anuncia show em São Paulo",
+  "detectadoEm": "2026-11-23T13:10:47.231141+00:00",
+  "enviado": true
  }
 ]
