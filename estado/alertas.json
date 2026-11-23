@@ -14913,5 +14913,17 @@
   "busca": "show gratuito Avenida Paulista",
   "detectadoEm": "2026-11-23T21:10:35.440910+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:ticketmaster.com.br/event/ms-lauryn-hill-and-wyclef-jean-celebrate-30-years-of-the-fugees",
+  "titulo": "Live Nation Brasil: Ms. Lauryn Hill & Wyclef Jean Celebrate 30 Years of Fugees’ The Score Venda Geral: 24/11",
+  "fonte": "Live Nation Brasil",
+  "link": "https://www.ticketmaster.com.br/event/ms-lauryn-hill-and-wyclef-jean-celebrate-30-years-of-the-fugees",
+  "publicado": "2026-11-23T22:11:15.425374+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: livenation",
+  "detectadoEm": "2026-11-23T22:11:15.425374+00:00",
+  "enviado": true
  }
 ]
