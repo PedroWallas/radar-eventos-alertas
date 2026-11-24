@@ -85,12 +85,15 @@ def buscar(consulta):
         titulo = (it.findtext("title") or "").strip()
         link = (it.findtext("link") or "").strip()
         fonte = (it.findtext("source") or "").strip()
+        # site que publicou (atributo url do <source>): o painel usa para mostrar o logo do jornal
+        src = it.find("source")
+        fonte_url = (src.get("url") or "").strip() if src is not None else ""
         desc = re.sub(r"<[^>]+>", " ", it.findtext("description") or "")
         try:
             pub = parsedate_to_datetime(it.findtext("pubDate"))
         except (TypeError, ValueError):
             pub = None
-        itens.append({"titulo": titulo, "link": link, "fonte": fonte, "pub": pub, "busca": consulta, "desc": desc})
+        itens.append({"titulo": titulo, "link": link, "fonte": fonte, "fonteUrl": fonte_url, "pub": pub, "busca": consulta, "desc": desc})
     return itens
 
 
@@ -327,7 +330,7 @@ def main():
             recentes.append(pw)
             reg = {
                 "id": k[:80], "titulo": re.sub(r"\s+-\s+[^-]+$", "", it["titulo"]),
-                "fonte": it["fonte"], "link": it["link"],
+                "fonte": it["fonte"], "fonteUrl": it.get("fonteUrl", ""), "link": it["link"],
                 "publicado": it["pub"].isoformat() if it["pub"] else None,
                 "prioridade": cl[0], "rotulo": cl[1], "busca": it["busca"],
                 "detectadoEm": datetime.now(timezone.utc).isoformat(),
