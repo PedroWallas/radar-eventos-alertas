@@ -15327,5 +15327,17 @@
   "busca": "anuncia show em São Paulo",
   "detectadoEm": "2026-11-24T18:40:42.197831+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:ticketmaster.com.br/event/sandy-e-junior",
+  "titulo": "Live Nation Brasil: Sandy e Junior Nada É Por Acaso Pré-Venda Elo: 1 e 2/12 | Venda Geral: 3/12",
+  "fonte": "Live Nation Brasil",
+  "link": "http://ticketmaster.com.br/event/sandy-e-junior",
+  "publicado": "2026-11-24T19:51:35.996093+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: livenation",
+  "detectadoEm": "2026-11-24T19:51:35.996093+00:00",
+  "enviado": true
  }
 ]
