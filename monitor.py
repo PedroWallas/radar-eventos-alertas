@@ -20,6 +20,7 @@ Opcionais:
   MODO_TESTE=1      não envia nada, só imprime
   GRUPO=a|b|c       força um grupo de buscas (padrão: reveza pelo minuto)
 """
+import html as html_mod
 import json
 import os
 import re
@@ -44,6 +45,7 @@ JANELA_H = 48           # só notícias publicadas nas últimas 48 horas
 MAX_VISTOS = 5000
 MAX_ALERTAS = 1500
 MAX_POR_MENSAGEM = 8
+MAX_LINKS_REAIS = 15      # consultas ao Bing por execução, para achar o link real e a imagem
 UA = "Mozilla/5.0 (RadarEventosApe/1.0; +https://github.com)"
 TESTE = os.environ.get("MODO_TESTE") == "1"
 
@@ -95,6 +97,48 @@ def buscar(consulta):
             pub = None
         itens.append({"titulo": titulo, "link": link, "fonte": fonte, "fonteUrl": fonte_url, "pub": pub, "busca": consulta, "desc": desc})
     return itens
+
+
+def escolher_link_real(titulo, xml):
+    """Acha, no RSS de notícias do Bing, a mesma matéria do título e devolve o link real do jornal e a miniatura.
+
+    O link do Google Notícias é um redirecionador sem imagem. Só vale se o título bater (>= 60% das palavras).
+    shortcut: depende do formato do RSS do Bing e acerta cerca de metade; quando falha o painel segue com o logo do jornal.
+    """
+    alvo = palavras(titulo)
+    melhor = None
+    for it in re.findall(r"<item>(.*?)</item>", xml, re.S):
+        t = re.search(r"<title>(.*?)</title>", it, re.S)
+        l = re.search(r"<link>(.*?)</link>", it, re.S)
+        if not t or not l:
+            continue
+        outro = palavras(html_mod.unescape(t.group(1)))
+        nota = len(alvo & outro) / max(1, len(alvo | outro))
+        if nota >= 0.6 and (not melhor or nota > melhor[0]):
+            melhor = (nota, it, html_mod.unescape(l.group(1)))
+    if not melhor:
+        return {}
+    link = melhor[2]
+    if "apiclick" in link:  # o endereço do jornal vem no parâmetro url
+        link = (urllib.parse.parse_qs(urllib.parse.urlparse(link).query).get("url") or [""])[0]
+    if not re.match(r"https?://", link):
+        return {}
+    out = {"linkReal": link}
+    img = re.search(r"<News:Image>(.*?)</News:Image>", melhor[1], re.S)
+    if img and re.match(r"https://", html_mod.unescape(img.group(1)).strip()):
+        out["imagem"] = html_mod.unescape(img.group(1)).strip()
+    return out
+
+
+def resolver_link(titulo):
+    try:
+        url = "https://www.bing.com/news/search?" + urllib.parse.urlencode({"q": titulo, "format": "rss", "mkt": "pt-BR"})
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return escolher_link_real(titulo, r.read(600_000).decode("utf-8", "replace"))
+    except Exception as e:  # noqa: BLE001
+        print(f"Link real indisponível: {e}")
+        return {}
 
 
 def palavras(titulo):
@@ -306,7 +350,7 @@ def main():
     grupo = os.environ.get("GRUPO") or ["a", "b", "c"][(int(time.time() // 600)) % 3]
     consultas = BUSCAS["sempre"] + BUSCAS[grupo]
     limite = datetime.now(timezone.utc) - timedelta(hours=JANELA_H)
-    novos, erros = [], 0
+    novos, erros, buscas_link = [], 0, 0
     recentes = [palavras(a["titulo"]) for a in alertas[-300:]]
     grupo_de = {c: g for g, lista in BUSCAS.items() for c in lista}
     for c in consultas:
@@ -342,6 +386,11 @@ def main():
             }
             if len(cl) > 2 and cl[2]:
                 reg["tipoAlerta"] = cl[2]
+            # Imagem da matéria: só para o que importa e no máximo MAX_LINKS_REAIS por execução (1 consulta cada)
+            if (cl[0] != "REGISTRO" or reg.get("tipoAlerta") == "ruptura") and buscas_link < MAX_LINKS_REAIS:
+                buscas_link += 1
+                reg.update(resolver_link(reg["titulo"]))
+                time.sleep(1)
             novos.append(reg)
         time.sleep(1.2)
 
