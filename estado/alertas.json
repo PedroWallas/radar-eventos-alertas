@@ -15378,5 +15378,45 @@
   "busca": "agências de viagem evento São Paulo",
   "detectadoEm": "2026-11-24T20:51:08.987666+00:00",
   "enviado": true
+ },
+ {
+  "id": "temporal alaga vias da pompeia e coloca sp em estado de atencao pelo 4o dia cons",
+  "titulo": "Temporal alaga vias da Pompeia e coloca SP em estado de atenção pelo 4º dia consecutivo",
+  "fonte": "Estadão",
+  "fonteUrl": "https://www.estadao.com.br",
+  "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNa3BjRU0yOGQ3dEJhaVZvSGl3cFpNR0RDNGMzOEhkNFJ1YmYxdXdjMUlxc1FKWFB5ZGFvaWdsWXRiV01TZHlxRXpYWVQwbXVEYktpblVVZEQydVdrTGxpWXlIOW13cS1GajJoQVk3MGxZLVo0eEhUbFBRNkRHbElNcjJsTjB2WHNKd1lZ0gGQAUFVX3lxTFAyOGkwRWpySk83aDBKM2VXRGpCOXB1a051WlBQVXN2OWlPUXFUXzBtTGJidXFoLW04cGY0NHZaUS1ZR1MwdU9RVmpXZWlZdlVUdmhNZGh3X1dCOVVJbTAxMDhEYl9EbzRlQUw0RW1sOU5SRVMyT3pUSVhkcnhJTUk3dllRRlpKcW9VUDRLYjRlXw?oc=5",
+  "publicado": "2026-11-24T20:54:05+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "⚠️ Ruptura em SP",
+  "busca": "enchente alagamento São Paulo",
+  "detectadoEm": "2026-11-24T21:00:50.431121+00:00",
+  "tipoAlerta": "ruptura",
+  "enviado": true
+ },
+ {
+  "id": "sandy e junior explicam imagem da nova serie de shows em sp sao voces",
+  "titulo": "Sandy e Junior explicam imagem da nova série de shows em SP: 'São vocês'",
+  "fonte": "G1",
+  "fonteUrl": "https://g1.globo.com",
+  "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQUHNIT0JieHpjQ1pOcVloMnBvaEV2MWpqdTc3NUxWY3B3MEVYOUZLSkplM1lEb1ZkSnBQbENpcS1xaGhmbjdtYUZBSFVGTGhQQTZZSXVYYmxXZWpNY19JcWxSWTFXWU4wUV9LUFhtSC1nQnRpZGtTZi1hMDB5UzY0dW12MmhNSjNiNFBCemRTTXJjbGppTXdNTS1KTGlrM01ET2prYTFBem40bFNCZW1LVjgyRDJMV3dobHBrUXl0YThMUTZVcGdlR0taWEJweEZxekpvOU5xRUtFd9IB6AFBVV95cUxOY0VxdlA1QzlER3IwZ0ZXUHg0dDdGNHl6NmlzZ2ZBN2ZPUVM0UzA4T2Q0Q1VzVlYtMlBnZ2t5LU5hUUVLcm41UWxwSWpfaUxFU0RnX2NVc0NDRzlKakZ2RnRIRk1FWFVQak5Wdk9WQXZRZ2JWeVI4UnZwN2lOSk1JNGwxWEdlcmVrbUpPSGNrN1EweDJWZExleDQ1S21XQW9QMFgtUm5WMXl5bDg0VFdFMFNGcE9WUDFZeld5eFg4Z3BVZlRYUXZIejg2Xzd3SzZKd0lka3JvdGRLQ1JOa0hHY3hvSHFvMG54?oc=5",
+  "publicado": "2026-11-24T20:49:30+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "show Nubank Parque",
+  "detectadoEm": "2026-11-24T21:01:00.821993+00:00",
+  "enviado": true
+ },
+ {
+  "id": "alex cohen traz show em homenagem a roberto carlos para sao paulo",
+  "titulo": "Alex Cohen traz show em homenagem a Roberto Carlos para São Paulo",
+  "fonte": "Terra",
+  "fonteUrl": "https://www.terra.com.br",
+  "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPWGVlUDUtU2NfQk5ZaEhBczlQOG9SWU9TSTdMOVN2eGg2cUJWNFFxTDhobm1hT3JHMy1adFNsb28td1ltWTNVTl9xemVicDZ6cHRPVXVaYVY2RHY0V01tc01sOHU0aWVRVDd2dkZ6S1I5aU5xUFdYSXZYbUNvX3lRcVdNaWJ1ZGt3TWk3RGN2Ujd5YkstekRFVWxOSlRBY2lWZ0tBa1Jxd0o5UkcwQ1M3NGZIVW84Y0lKSmtBY0liTWdDSThfN1pONGhFMkhGSFluS0ZnLTZ0NGE5SWdtb3hTVnAxekItNGs?oc=5",
+  "publicado": "2026-11-24T14:32:00+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "ingressos à venda show São Paulo",
+  "detectadoEm": "2026-11-24T21:01:14.867839+00:00",
+  "enviado": true
  }
 ]
