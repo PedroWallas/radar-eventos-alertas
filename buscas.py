@@ -14,6 +14,13 @@ BUSCAS = {
         "anuncia show em São Paulo",
         "anuncia show no Brasil 2027",
         "show único no Brasil São Paulo",
+        # Rupturas que derrubam ou deslocam a demanda (viram alerta "ruptura", só registro, sem aviso no celular)
+        "greve metrô São Paulo",
+        "greve CPTM ônibus São Paulo",
+        "enchente alagamento São Paulo",
+        "apagão falta de energia São Paulo",
+        "protesto bloqueio Avenida Paulista",
+        "greve aeroporto Guarulhos Congonhas",
     ],
     # Shows, festivais e casas de show
     "a": [
@@ -187,4 +194,24 @@ NOVIDADE = [
     "data", "datas", "ingresso", "pre-venda", "venda", "adiad", "cancel", "line-up", "lineup",
     "programacao", "atracoes", "extra", "anuncia", "confirma data", "confirma edicao",
     "2028", "nova edicao", "visitantes", "expositores",
+]
+
+# Ruptura: um fato que trava a cidade (fato) atingindo transporte, energia ou via principal (alvo).
+# Fica só como registro (sem aviso no celular); o Radar mostra na aba Clima.
+RUPTURA_FATO = [
+    "greve", "paralisa", "paralisad", "enchente", "alaga", "temporal", "chuva", "apagao", "sem energia",
+    "falta de energia", "falta de luz", "sem luz", "queda de energia", "queda de arvore", "manifestacao",
+    "protesto", "interdit", "bloquei", "fechad", "intransit", "cancela", "falha", "velocidade reduzida", " pane ",
+]
+RUPTURA_ALVO = [
+    "metro", "cptm", "viaquatro", "viamobilidade", "onibus", "sptrans", "rodoviaria", "aeroporto", "voos",
+    "guarulhos", "congonhas", "avenida paulista", "marginal", "rodoanel", "energia", "enel", "sabesp",
+    "trens", "trem ", "linhas ", "linha 1", "linha 2", "linha 3", "linha 4", "linha 5", "linha 7", "linha 8", "linha 9", "estacao", "tunel", "transito", " vias", "luz ",
+]
+# Alvos que só existem em São Paulo: dispensam "São Paulo" na manchete
+RUPTURA_ALVO_SP = ["avenida paulista", "cptm", "viaquatro", "viamobilidade", "sptrans", "metroviari", "enel", "sabesp", "marginal pinheiros", "marginal tiete"]
+RUPTURA_RUIDO = [
+    "horoscopo", "bolsonaro", " lula ", "eleicao", "candidato", "vagas", "concurso", "emprego", "filme",
+    "serie ", "review", "campeonato", "jogo", "morre", "assalto", "novela", "ensaio",
+    "concessao", "direito a", "advogado", "indeniz", "explica como", "londres", "paris", "nova york",
 ]

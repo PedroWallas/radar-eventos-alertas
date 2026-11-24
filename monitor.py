@@ -33,7 +33,7 @@ from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 
 from buscas import (BUSCAS, COMERCIAL, CRITICO, EVENTO, EXCLUIR, PAVILHOES, EVENTOS_SP, DEMANDA, OUTRO_LUGAR, NOVIDADE,
-                    GRANDES_LOCAIS, HOTELARIA, SAO_PAULO, ANUNCIO)
+                    GRANDES_LOCAIS, HOTELARIA, SAO_PAULO, ANUNCIO, RUPTURA_FATO, RUPTURA_ALVO, RUPTURA_ALVO_SP, RUPTURA_RUIDO)
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 ESTADO = os.path.join(AQUI, "estado")
@@ -120,10 +120,15 @@ def classificar(item):
     na cidade. O resto vira REGISTRO (fica no arquivo para o Claude) ou é descartado.
     """
     t = " " + norm(item["titulo"]) + " "
-    if tem(t, EXCLUIR):
-        return None
     em_sp = tem(t, SAO_PAULO)
     fora = tem(t, OUTRO_LUGAR) and not em_sp
+    # Ruptura vem antes de EXCLUIR (que descarta "greve", "protesto" etc.). Notícia de show/evento segue o caminho
+    # de sempre (cancelamento e data extra continuam indo ao celular) e o megashow mantém a prioridade máxima.
+    if (not fora and not tem(t, CRITICO) and not tem(t, EVENTO) and not tem(t, RUPTURA_RUIDO) and tem(t, RUPTURA_FATO) and tem(t, RUPTURA_ALVO)
+            and (em_sp or tem(t, RUPTURA_ALVO_SP))):
+        return ("REGISTRO", "⚠️ Ruptura em SP", "ruptura")
+    if tem(t, EXCLUIR):
+        return None
     if fora:
         return None
     if tem(t, CRITICO) or ("paulista" in t and ("show" in t or "mega" in t) and ("gratuit" in t or "prefeitura" in t or "nunes" in t)):
