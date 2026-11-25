@@ -15658,5 +15658,19 @@
   "detectadoEm": "2026-11-25T13:31:03.723785+00:00",
   "tipoAlerta": "mudanca-data",
   "enviado": true
+ },
+ {
+  "id": "super chuva sao paulo deve ter volume mais extremo da semana hoje veja possiveis",
+  "titulo": "Super chuva: São Paulo deve ter volume mais extremo da semana hoje; veja possíveis rotas de trânsito, riscos de alagamentos e o que fazer em caso de emergência",
+  "fonte": "Gazeta de São Paulo",
+  "fonteUrl": "https://www.gazetasp.com.br",
+  "link": "https://news.google.com/rss/articles/CBMinAJBVV95cUxOb1I3YWt3UHN3eTBXdnBQOGJPRUhONGlQeUlLSmkxdDFEVkVCRUdBOUlhU0ExWGR2NkNLOVRKdlcyV09IWU9mR0Z3NmtzRFJMMWZ6TkZxT2RnQVVEcC0ybThlVl9jaHM4WWRmckg5aHAyTXFfZkdHRkxVeFRid1p4dW01NHpIYjh6dzhlZmI4Y3FoNzRPSGtXTVhaLXZoQzJuUnM5Uy1lVHlyM1JzdVVUQ3ZCNER6MWwwNnVFV0tfZGQ3U3FRcWI5SGNtby1oMVVNcV85dWRvMV9pN2J1cTJkUWJJdWJTeWNCSGszVDVjT0p3YXVtTkw3WkpUaDAyRFE4cnQwREp4VW1TRGdnaFFyYW1mNlZDTFdsZllKYQ?oc=5",
+  "publicado": "2026-11-25T13:41:52+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "⚠️ Ruptura em SP",
+  "busca": "enchente alagamento São Paulo",
+  "detectadoEm": "2026-11-25T14:00:49.995728+00:00",
+  "tipoAlerta": "ruptura",
+  "enviado": true
  }
 ]
