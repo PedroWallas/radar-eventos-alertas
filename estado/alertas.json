@@ -15602,5 +15602,19 @@
   "busca": "evento de turismo São Paulo 2027",
   "detectadoEm": "2026-11-25T10:51:08.270617+00:00",
   "enviado": true
+ },
+ {
+  "id": "arvores caem e bloqueiam vias em sp capital teve 46 ocorrencias por chuva",
+  "titulo": "Árvores caem e bloqueiam vias em SP; capital teve 46 ocorrências por chuva",
+  "fonte": "UOL Notícias",
+  "fonteUrl": "https://noticias.uol.com.br",
+  "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNZHowVFVxdl9uMVBSbzRCdkdPSzBnaHpVZWNMVnVfOUdrNWcxb1JvaDV6T3FfTzJhTnI2YVRZcUU3QlhrSDJsbFBRelVYeHZEUlBWdUtnWU0zNkVhUk9pVGpvN0NPUF9WMzNOS0RVMmJJLTduME1Qc0dmcE5PdGNma2U5dkxUNkxIakNySWo3eHNxWHF0UUN2N2x3TFhZOVhLN2NmdmdPVmVsdXJhOFN1SU91bDlxQWI4RHRpZ20tY2owU3hVak16X2xQQzVDUEczU3JSeEJvUQ?oc=5",
+  "publicado": "2026-11-25T07:14:52+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "⚠️ Ruptura em SP",
+  "busca": "enchente alagamento São Paulo",
+  "detectadoEm": "2026-11-25T11:14:11.793469+00:00",
+  "tipoAlerta": "ruptura",
+  "enviado": true
  }
 ]
