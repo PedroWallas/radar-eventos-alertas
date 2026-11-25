@@ -44,3 +44,11 @@ assert c("Megashow na Avenida Paulista terá bloqueio e reforço no metrô")[0] 
 # Classificação antiga não muda
 assert c("Coldplay anuncia show extra no MorumBIS em 2027")[0] in ("ALTO", "EVENTO"), c("Coldplay anuncia show extra no MorumBIS em 2027")
 print("ok: ruptura")
+
+# Anúncio de evento (vira card no Radar, qualquer prioridade)
+from monitor import anuncio_de_evento  # noqa: E402
+for t in ["Sandy E Junior Anunciam 6 Shows Em SP E Levam Fãs À Loucura!", "Shakira anuncia quatro shows no Brasil", "Dave Matthews Band confirma shows no Brasil: São Paulo, Rio e Curitiba", "BABYMETAL retorna ao Brasil para show único em São Paulo", "Fugees em São Paulo: show, preços e ingressos"]:
+    assert anuncio_de_evento(t), t
+for t in ["Daniel Caesar cancela show em São Paulo", "Adiado o show do Coldplay em São Paulo", "Veja como chegar e o que levar ao show de Mariah Carey em São Paulo", "Chuva forte alaga vias e cancela voos em Congonhas", "Concessão do Pacaembu acumula poucos jogos", "After em São Paulo: Onde Tem, Melhores Festas e Ingressos", "Feriado em São Paulo: 25 atrações para o fim de semana, veja ingressos"]:
+    assert not anuncio_de_evento(t), t
+print("ok: anúncio de evento")

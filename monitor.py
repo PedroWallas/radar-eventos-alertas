@@ -99,6 +99,17 @@ def buscar(consulta):
     return itens
 
 
+def anuncio_de_evento(titulo):
+    """True quando a manchete anuncia um evento (show, festival, feira, jogo...) com palavra de anúncio.
+
+    Não muda a prioridade nem o envio ao celular: só marca o alerta para o Radar criar o card no Kanban,
+    mesmo quando a manchete fica como simples registro. Cancelamento e adiamento ficam de fora (mudança de data).
+    """
+    t = " " + norm(titulo) + " "
+    # Listas de "onde ir" e guias não anunciam evento nenhum
+    return tem(t, EVENTO) and tem(t, ANUNCIO) and not tem(t, ["cancel", "adiad", "onde tem", "melhores", "guia", "o que fazer", "atracoes para", "roteiro"])
+
+
 def escolher_link_real(titulo, xml):
     """Acha, no RSS de notícias do Bing, a mesma matéria do título e devolve o link real do jornal e a miniatura.
 
@@ -386,6 +397,8 @@ def main():
             }
             if len(cl) > 2 and cl[2]:
                 reg["tipoAlerta"] = cl[2]
+            if anuncio_de_evento(reg["titulo"]) and reg.get("tipoAlerta") != "ruptura":
+                reg["anuncio"] = True
             # Imagem da matéria: só para o que importa e no máximo MAX_LINKS_REAIS por execução (1 consulta cada)
             if (cl[0] != "REGISTRO" or reg.get("tipoAlerta") == "ruptura") and buscas_link < MAX_LINKS_REAIS:
                 buscas_link += 1
