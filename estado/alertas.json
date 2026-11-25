@@ -15574,5 +15574,20 @@
   "busca": "anuncia show em São Paulo",
   "detectadoEm": "2026-11-25T08:30:41.946275+00:00",
   "enviado": true
+ },
+ {
+  "id": "chuva provoca alagamentos afeta circulacao de trens e interdita vias em sp",
+  "titulo": "Chuva provoca alagamentos, afeta circulação de trens e interdita vias em SP",
+  "fonte": "G1",
+  "fonteUrl": "https://g1.globo.com",
+  "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQaUI1WlUzZ2k4STlwMlZ4bExjM0xBaEktcWFFbURQT1hpVHJQQU5LVGNnOVhGSWNzZ3BicU9pOFZJZHNCbnJDdU5iYmtnUllrcS1rOER3MkdPZG1GRWVDellWcURYQmFTLWxERmowSGhBUXVWSTFmZTRobTVqWnBucTZ2SGtDOXdwNHpyM2lnVGYxRDNtVWxtOWNYVnFOOW5LdVZoandaZDdrMERaaE0zdEliWUdhLXZrektDaUxWS0tUYjBDU3UtZlZ3alZWZ9IB3AFBVV95cUxPcmY5dFVXRkJsODdjWURYcUVXQWFhcXhHQlFqbWx4T1pQVTRURzhNTFBBNTNINUp6UnFVeUhtOWpBYnFkYmZucTY3ZFVVMm1rTnFHaUEzTE5CS1BqWlJieVRhcDFmdy1TMGVwbk5NRFlaQU5LVGtLWnZKWjE1WmZKdDlHU3BUNGlLYk1fWGVWVVpzYVVSWmN2Qzk4OFlSTUdWMC0yZGg5Ym5VWEg0N0k0MjlIV09zNm4zTThOeXRDUDlSbjBDUGFtQS1CNFg0dmtpZzBDYWdsRHVmc0w0?oc=5",
+  "publicado": "2026-11-25T09:39:38+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "⚠️ Ruptura em SP",
+  "busca": "enchente alagamento São Paulo",
+  "detectadoEm": "2026-11-25T10:00:51.700971+00:00",
+  "tipoAlerta": "ruptura",
+  "linkReal": "https://g1.globo.com/sp/sao-paulo/noticia/2026/11/25/chuva-provoca-alagamentos-afeta-circulacao-de-trens-e-interdita-vias-em-sp.ghtml",
+  "enviado": true
  }
 ]
