@@ -15672,5 +15672,17 @@
   "detectadoEm": "2026-11-25T14:00:49.995728+00:00",
   "tipoAlerta": "ruptura",
   "enviado": true
+ },
+ {
+  "id": "fonte:suhaimusichall.com.br/evento/summer-reggae",
+  "titulo": "Suhai Music Hall: dom 31 jan Summer Reggae",
+  "fonte": "Suhai Music Hall",
+  "link": "https://suhaimusichall.com.br/evento/summer-reggae/",
+  "publicado": "2026-11-25T14:51:32.321530+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "fonte oficial: suhai",
+  "detectadoEm": "2026-11-25T14:51:32.321530+00:00",
+  "enviado": false
  }
 ]
