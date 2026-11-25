@@ -15630,5 +15630,19 @@
   "detectadoEm": "2026-11-25T12:10:50.276165+00:00",
   "tipoAlerta": "ruptura",
   "enviado": true
+ },
+ {
+  "id": "trama afetiva exibe jaquetas de guarda chuvas descartados na avenida paulista",
+  "titulo": "Trama Afetiva exibe jaquetas de guarda-chuvas descartados na Avenida Paulista",
+  "fonte": "Espaço do Povo",
+  "fonteUrl": "https://espacodopovo.com.br",
+  "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1uX3VYSXZobU82ck5LX3JpWnVOdjZpdUluRGhyYzNWZlZjRkxxREJIT1gxeWVQVkZ5ZUhia1lldWl3UW5mUnIza28yUllTYVNfMFVOVmpMMHlSZEtUUVRHbEJlYXZ4NHVVdEFtYzd2Um9qZEFXNFhwcW9vQ3I?oc=5",
+  "publicado": "2026-11-25T12:11:51+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "⚠️ Ruptura em SP",
+  "busca": "show gratuito Avenida Paulista",
+  "detectadoEm": "2026-11-25T12:40:35.325519+00:00",
+  "tipoAlerta": "ruptura",
+  "enviado": true
  }
 ]
