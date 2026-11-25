@@ -15616,5 +15616,19 @@
   "detectadoEm": "2026-11-25T11:14:11.793469+00:00",
   "tipoAlerta": "ruptura",
   "enviado": true
+ },
+ {
+  "id": "chuva provoca alagamentos derruba arvores e causa transtornos no transito e nos ",
+  "titulo": "Chuva provoca alagamentos, derruba árvores e causa transtornos no trânsito e nos trens em São Paulo",
+  "fonte": "O GLOBO",
+  "fonteUrl": "https://oglobo.globo.com",
+  "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNQUlReUoxaXMzRS1MMndyandmR01QbEE5VjFnMndCZjItLVdZU0gxUFQzTjJsT3dYcERISnBUZlc0elhoS2EzX2RHVE9HS0NEU2dnM1UxM2c3RnF6eGM5ZWhMb0Z2Z1ZWQ2pUeXFEdEF6eEJ1a2NDVlJjZVBzb3ViSXFWZlFzRDNQQnNNZVJqeXRSdnNGajNEYlNWUnJ4YmRHVlhORmh2VU5ZX03SAboBQVVfeXFMT3ZpZzhXLUxseE1GaVpSUXVubTdubVVUR3JIQ0U0dEVVNWJwMzBFajdpUnh5N0VSZEF5UTBMZE5JOFlMaGxvanFFZ1lIS2cwWHJNMkNhMkVKN1MyR2h1NXA5TFZ5cmw2ZlV0NjNobWNVZ1BDcjhsVG9nbWhPMkpmdlBLWTE2T0RYdDB0eGNrTmdXSDVQVGlsSFRwWXM2YzRGV1Z0eTBmc0c5LWRQUV9pUU1FS3A3UHJvNnRn?oc=5",
+  "publicado": "2026-11-25T11:52:04+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "⚠️ Ruptura em SP",
+  "busca": "enchente alagamento São Paulo",
+  "detectadoEm": "2026-11-25T12:10:50.276165+00:00",
+  "tipoAlerta": "ruptura",
+  "enviado": true
  }
 ]
