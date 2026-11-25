@@ -15901,5 +15901,20 @@
   "busca": "calendário de eventos São Paulo 2027",
   "detectadoEm": "2026-11-25T19:51:17.211889+00:00",
   "enviado": true
+ },
+ {
+  "id": "chuva alaga a zona leste de sp e fecha tunel no centro",
+  "titulo": "Chuva alaga a Zona Leste de SP e fecha túnel no centro",
+  "fonte": "O Antagonista",
+  "fonteUrl": "https://oantagonista.com.br",
+  "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxObk11WUstMnVaNDNfQS1CUm5FT2RJTmN6ZjRFaHNDMHBoNTUwS2pYVnJ0RTY1THZIZ1lzSGJYS1V5bmQzenU0MjVUZVQwbV9xSVoycDh0dWdubHR4MllDNXU4czF3Q0FLZDVGZUhUR0otUW5lczlDQjdFdUdHYXp2M2pEekFZbGk5RW9INzhjSFhCSFBs?oc=5",
+  "publicado": "2026-11-23T23:38:00+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "⚠️ Ruptura em SP",
+  "busca": "enchente alagamento São Paulo",
+  "detectadoEm": "2026-11-25T20:00:50.516594+00:00",
+  "tipoAlerta": "ruptura",
+  "linkReal": "https://oantagonista.com.br/brasil/chuva-alaga-a-zona-leste-de-sp-e-fecha-tunel-no-centro/",
+  "enviado": true
  }
 ]
