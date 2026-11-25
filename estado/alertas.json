@@ -15644,5 +15644,19 @@
   "detectadoEm": "2026-11-25T12:40:35.325519+00:00",
   "tipoAlerta": "ruptura",
   "enviado": true
+ },
+ {
+  "id": "daniel caesar cancela show em sao paulo e toda a turne na america latina sem exp",
+  "titulo": "Daniel Caesar cancela show em São Paulo e toda a turnê na América Latina sem explicar motivo",
+  "fonte": "Vagalume",
+  "fonteUrl": "https://www.vagalume.com.br",
+  "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPb2hCS2RMbHQxc0pacl85Mnh6VXN1VXFnRzNsMGJKWkJ3cUQ0VEJkbU1GUmxWRzFiUkVGbE5BbjJtMmF6VURBMXJjYWFrSFRBQXo3YS14VGR1YkpuNTl0SnB1TGF4SHNaWGdheXR6Q05XT3U0X0dMRDVKc1ZodXVPd3YycXI2RzhVMnpWS2tmSENQLVFablNNVlNRc2MxWmVKUHRuZkxObnpyUFpaVk14ZmJwRmF2eWRZb1BVV0ZDcUFEeVpWLTFtUFh5WXBVWWxUS3R0ejNkWTc?oc=5",
+  "publicado": "2026-11-25T13:14:27+00:00",
+  "prioridade": "EVENTO",
+  "rotulo": "🎫 Venda, data extra ou mudança de data em SP",
+  "busca": "show Suhai Music Hall",
+  "detectadoEm": "2026-11-25T13:31:03.723785+00:00",
+  "tipoAlerta": "mudanca-data",
+  "enviado": true
  }
 ]
