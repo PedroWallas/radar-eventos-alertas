@@ -274,7 +274,7 @@ def _ntfy(texto):
     if not topico:
         return None
     critico = "ALERTA CRÍTICO" in texto
-    titulo = "Radar Apê · ALERTA CRÍTICO" if critico else "Radar de Eventos Apê"
+    titulo = "Faro · ALERTA CRÍTICO" if critico else "Faro · Hárpia"
     req = urllib.request.Request(
         "https://ntfy.sh/" + urllib.parse.quote(topico), data=texto.replace("*", "").encode("utf-8"),
         headers={"User-Agent": UA, "Title": titulo.encode("utf-8").decode("latin-1", "ignore"),
@@ -315,38 +315,44 @@ def enviar(texto):
     return ok_total
 
 
-def montar_mensagens(novos):
-    agora = datetime.now(SP_TZ).strftime("%d/%m %H:%M")
+# Criticidade dita pela Hárpia: fonte oficial e grande evento pesam mais que notícia comercial ou de agenda.
+CRITICIDADE = {"FONTE": "alta", "ALTO": "alta", "COMERCIAL+": "alta", "COMERCIAL": "média", "EVENTO": "baixa"}
+ICONE_PRI = {"FONTE": "🔴", "COMERCIAL+": "🟠", "ALTO": "🟡", "COMERCIAL": "🔵", "EVENTO": "⚪"}
+
+
+def periodo_do_voo(hora):
+    """A Hárpia fala do "voo" da parte do dia em que achou a notícia (horário de São Paulo)."""
+    return "madrugada" if hora < 5 else "manhã" if hora < 12 else "tarde" if hora < 18 else "noite"
+
+
+def fala_da_harpia(itens, periodo):
+    """Uma frase curta que abre a mensagem: quantas novidades e a criticidade da mais importante."""
+    crit = CRITICIDADE.get(itens[0]["prioridade"], "baixa")  # a lista já vem da mais quente para a mais fria
+    if len(itens) == 1:
+        return f"No meu voo da {periodo} achei esta notícia de criticidade {crit}:"
+    return f"No meu voo da {periodo} achei {len(itens)} novidades. A mais importante é de criticidade {crit}:"
+
+
+def montar_mensagens(novos, agora_dt=None):
+    agora_dt = agora_dt or datetime.now(SP_TZ)
+    agora, periodo = agora_dt.strftime("%d/%m %H:%M"), periodo_do_voo(agora_dt.hour)
     msgs = []
     for n in [x for x in novos if x["prioridade"] == "CRITICO"]:
-        msgs.append(f"🚨 *RADAR APÊ · ALERTA CRÍTICO* ({agora})\n\n*{n['titulo']}*\n{n['fonte']}\n{n['link']}\n\n"
+        msgs.append(f"🚨 *Faro · ALERTA CRÍTICO* · {agora}\n\nNo meu voo da {periodo} vi algo urgente:\n\n*{n['titulo']}*\n{n['fonte']}\n{n['link']}\n\n"
                     "Se houver data: criar regra de proteção no Climber agora.")
     resto = [x for x in novos if x["prioridade"] not in ("CRITICO", "REGISTRO")]
     resto.sort(key=lambda x: ORDEM.index(x["prioridade"]))
-
-    # Cabeçalho: resumo de urgência (quantos de cada prioridade, do mais quente ao mais frio)
-    ICONE_PRI = {"FONTE": "🔴", "COMERCIAL+": "🟠", "ALTO": "🟡", "COMERCIAL": "🔵", "EVENTO": "⚪"}
-    from collections import Counter
-    contagem = Counter(n["prioridade"] for n in resto)
-    resumo_partes = []
-    for pri in ORDEM:
-        if pri in contagem:
-            resumo_partes.append(f"{ICONE_PRI.get(pri, '•')} {contagem[pri]}x {pri}")
-    resumo = "  ".join(resumo_partes)
-
     for i in range(0, len(resto), MAX_POR_MENSAGEM):
         bloco = resto[i:i + MAX_POR_MENSAGEM]
         parte_info = f" · parte {i // MAX_POR_MENSAGEM + 1}" if len(resto) > MAX_POR_MENSAGEM else ""
-        linhas = [
-            f"📡 *Radar de Eventos Apê* · {agora}{parte_info}",
-            resumo,
-        ]
+        linhas = [f"🦅 *Hárpia · Faro* · {agora}{parte_info}"]
+        if i == 0:
+            linhas.append(fala_da_harpia(resto, periodo))
         grupo = None
         for n in bloco:
-            rotulo_com_pri = f"{ICONE_PRI.get(n['prioridade'], '•')} *{n['rotulo'].lstrip('🎫🎤🏨💼 ')}*"
             if n["rotulo"] != grupo:
                 grupo = n["rotulo"]
-                linhas.append(f"\n{rotulo_com_pri}")
+                linhas.append(f"\n{ICONE_PRI.get(n['prioridade'], '•')} *{n['rotulo'].lstrip('🎫🎤🏨💼🆕 ')}*")
             linhas.append(f"• {n['titulo']}\n  {n['link']}")
         msgs.append("\n".join(linhas))
     return msgs
@@ -422,11 +428,11 @@ def main():
         except Exception as e:  # noqa: BLE001
             print(f"Fontes oficiais: falhou ({e})")
     if os.environ.get("ENVIAR_TESTE") == "1":
-        enviar("✅ *Teste do Radar de Eventos Apê.* Se você recebeu esta mensagem, este canal está funcionando.")
+        enviar("✅ *Teste do Faro.* Se você recebeu esta mensagem, este canal está funcionando.")
     if primeira and not TESTE:
         # Enquanto nenhum canal estiver configurado, só registra (o Claude usa o registro no Radar).
         # Quando o primeiro aviso sair, marca como iniciado e passa a mandar as novidades.
-        if enviar("✅ *Radar de Eventos Apê ativado.* A partir de agora você recebe aqui os anúncios novos de "
+        if enviar("✅ *Faro ativado.* A partir de agora você recebe aqui os anúncios novos de "
                   "shows, feiras e eventos em São Paulo, 24 horas por dia. Alertas do megashow da Paulista chegam na hora."):
             vistos["iniciado"] = True
         for n in novos:
