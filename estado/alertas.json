@@ -16243,5 +16243,20 @@
   "busca": "CCXP 2027",
   "detectadoEm": "2026-11-26T15:41:12.530649+00:00",
   "enviado": true
+ },
+ {
+  "id": "xlov volta a sao paulo nesta semana seis meses apos show cancelado",
+  "titulo": "XLOV volta a São Paulo nesta semana, seis meses após show cancelado",
+  "fonte": "UOL",
+  "fonteUrl": "https://www.uol.com.br",
+  "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOcFZudWhFRWh3ZzlBRnUtN3lZV2FaeWV4enRVcjFlNFQwSEdBZVZMUjlxcS1zUTZwaWtZNXAxREFuOXkxbVR6WWR0VWV4d2Nyb3BsSGdEMkxPRmJYQXhUX3ZFWFpLMkEzV2M2SklOQjhBY0c1TjM2cWFHUGw1SWF2UXlUQ3dmWllGQ0JwejdheGhhRTlqbnZ4UUlnT3A5cHV2ZUpUZ3NjcE0?oc=5",
+  "publicado": "2026-11-26T15:07:23+00:00",
+  "prioridade": "EVENTO",
+  "rotulo": "🎫 Venda, data extra ou mudança de data em SP",
+  "busca": "show Tokio Marine Hall",
+  "detectadoEm": "2026-11-26T16:01:10.713262+00:00",
+  "tipoAlerta": "mudanca-data",
+  "linkReal": "https://www.uol.com.br/toca/noticias/2026/11/26/xlov-volta-a-sao-paulo-seis-meses-apos-show-cancelado.htm",
+  "enviado": true
  }
 ]
