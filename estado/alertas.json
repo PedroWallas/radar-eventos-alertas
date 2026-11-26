@@ -16258,5 +16258,19 @@
   "tipoAlerta": "mudanca-data",
   "linkReal": "https://www.uol.com.br/toca/noticias/2026/11/26/xlov-volta-a-sao-paulo-seis-meses-apos-show-cancelado.htm",
   "enviado": true
+ },
+ {
+  "id": "ministerio publico propoe compensacao de 30 passagens a passageiros prejudicados",
+  "titulo": "Ministério Público propõe compensação de 30 passagens a passageiros prejudicados por falhas nos trens de São Paulo",
+  "fonte": "Blogger.com",
+  "fonteUrl": "https://diariodacptm.blogspot.com",
+  "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOeDhIRXI0LVNISjVnRTdqYmVzczNrdTBmLVc2ZTdPOE5hdDNoMjJBdDFJaGJTMnkxd0duWDFBakdudWJIdi1JX2ktLW1WQ0U4eWVFMGFfU2tacFhOYUJERWVfWHhoZGxXUVh2Q2Z3UzVyRmQ3ZUZVX25Fd3o0SklZSk1XWkZlcFhkR1o4MA?oc=5",
+  "publicado": "2026-11-26T10:26:00+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "⚠️ Ruptura em SP",
+  "busca": "greve metrô São Paulo",
+  "detectadoEm": "2026-11-26T16:30:46.104146+00:00",
+  "tipoAlerta": "ruptura",
+  "enviado": true
  }
 ]
