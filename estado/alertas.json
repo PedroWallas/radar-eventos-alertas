@@ -16577,5 +16577,33 @@
   "busca": "megashow Avenida Paulista",
   "detectadoEm": "2026-11-27T00:30:34.760999+00:00",
   "enviado": true
+ },
+ {
+  "id": "lote atual de ingressos do primavera sound sao paulo termina nesta quinta feira",
+  "titulo": "Lote atual de ingressos do Primavera Sound São Paulo termina nesta quinta-feira",
+  "fonte": "Rato de Show",
+  "fonteUrl": "https://www.ratodeshow.com.br",
+  "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPU1VKemtfNTZBZXNuQ3NPVlJ1a081TnJXNkJkaGNheFA0U2xyRHV1UDJ2eHRvQnJ2b2dSamVWbjlHS3ZPTnViQm9qaS11blJtR2pkZkYwdUdacXBSYXBKYlY1cVZ2ZzR3SXZhY0FmS2lrX193UTRnQXMtY3kxX1VRa1AyOEdIVkw1MEVfbjRTUzZZNjhrS3lfczRSZTJTNVdKeWk5TXJCZmdORnJuV2c?oc=5",
+  "publicado": "2026-11-27T00:30:24+00:00",
+  "prioridade": "ALTO",
+  "rotulo": "🎤 Grande evento anunciado",
+  "busca": "show único no Brasil São Paulo",
+  "detectadoEm": "2026-11-27T00:40:43.901875+00:00",
+  "anuncio": true,
+  "linkReal": "https://ratodeshow.com.br/lote-atual-de-ingressos-do-primavera-sound-sao-paulo-termina-nesta-quinta-feira",
+  "enviado": true
+ },
+ {
+  "id": "neural wreck se apresenta em sao paulo no dia 4 de dezembro",
+  "titulo": "Neural Wreck se apresenta em São Paulo no dia 4 de dezembro",
+  "fonte": "Rato de Show",
+  "fonteUrl": "https://www.ratodeshow.com.br",
+  "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxObnk5V01VNmhrdDRvVDl5SkpaU19qMzZ5aXBYLWl3U2Eyei1NcGd2dmpCTHBEeHBvVGFWUC12SDIxbXV4TVpRbl9XSzFONWV3Si1rOF9hVjBIak9jQ2otNEg4bjNTeXQzN1VvenAxbFllOHFGc1Z6VUxjTjJrYV95VUhyVWtkRU0yUEszS01GbEtOeUk?oc=5",
+  "publicado": "2026-11-27T00:36:36+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "show único no Brasil São Paulo",
+  "detectadoEm": "2026-11-27T00:40:45.181861+00:00",
+  "enviado": true
  }
 ]
