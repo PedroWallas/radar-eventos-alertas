@@ -16946,5 +16946,24 @@
   "busca": "Ricardo Nunes megashow",
   "detectadoEm": "2026-11-27T18:30:35.995569+00:00",
   "enviado": true
+ },
+ {
+  "id": "fonte:saopauloexpo|expo revestir 2027|2027-02-22",
+  "titulo": "São Paulo Expo: EXPO REVESTIR 2027",
+  "fonte": "São Paulo Expo",
+  "link": "https://www.saopauloexpo.com.br/pt/evento-spe/expo-revestir-2027/?occurrence=2027-02-22",
+  "publicado": "2026-11-27T18:41:20.917959+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: saopauloexpo",
+  "detectadoEm": "2026-11-27T18:41:20.917959+00:00",
+  "evento": {
+   "nome": "EXPO REVESTIR 2027",
+   "inicio": "2027-02-22",
+   "fim": "2027-02-26",
+   "local": "São Paulo Expo · Pavilhões 1 a 6",
+   "tipo": ""
+  },
+  "enviado": true
  }
 ]
