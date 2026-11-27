@@ -16791,5 +16791,34 @@
   "busca": "agências de viagem evento São Paulo",
   "detectadoEm": "2026-11-27T14:21:06.015015+00:00",
   "enviado": true
+ },
+ {
+  "id": "falhas em trens provocam atrasos e lotacao nas linhas 8 9 e 11 na grande sp",
+  "titulo": "Falhas em trens provocam atrasos e lotação nas linhas 8, 9 e 11 na Grande SP",
+  "fonte": "G1",
+  "fonteUrl": "https://g1.globo.com",
+  "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNUldUNUJTS0diVkV0NzlvTTEyTmxmQ1BYcDhJUE52S0JVRGhGbDFsWWI1ZE5GWXV4SXlsM1c2VnM1MC1WVWpQdnZkdDhNMF9qWUF2QWdUX3J0QmFPZVdXaVZITFYzSnBfalRtRDc4MVF6b3o1NUhHTGtmZFM0X20wN0lqejZyWGg0c3NpMWhscldnMER4RHJCUjliYnFOVk5rYjFTRU9EUHVPNkMzNE0taFN4Y25YU09ZWmFReUZNTFh2UWIwVlVPN1Q4Vm5ud0nSAd4BQVVfeXFMUHVoajlFTGs4UXpVakN1bWVYQzhOczloNUdtS0NaLWxaVXJPaFpXQU9PcUpweFdlZ21kM2w4MElLd2x5VTE3MXVjR1F6bTl2VDQ4WG1IeUVWaS1fRmlzTTllVGJWRFJ6em5qcE13V3hRVXhWYXBUWjZkbkFSWG1HTnZvQjdGbG5hR0pMN25iNWlGc28wVHVOa01acEx0eG56Y3lORG5keGtFSUNrczExMjZLZUhGNGg4TlVldjNnU25FNE53cE1VVUEwZkpfVFhRVzNZR1dXT0o2NHlIQkdR?oc=5",
+  "publicado": "2026-11-27T10:27:23+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "⚠️ Ruptura em SP",
+  "busca": "greve metrô São Paulo",
+  "detectadoEm": "2026-11-27T14:50:47.664529+00:00",
+  "tipoAlerta": "ruptura",
+  "linkReal": "https://www.msn.com/pt-br/noticias/noticias/falhas-em-trens-provocam-atrasos-e-lota%C3%A7%C3%A3o-nas-linhas-8-9-e-11-na-grande-sp/ar-AA2ilQ0y",
+  "enviado": true
+ },
+ {
+  "id": "sao paulo conhece partidas da copa do mundo feminina 2027 e datas de venda de in",
+  "titulo": "São Paulo conhece partidas da Copa do Mundo Feminina 2027 e datas de venda de ingressos",
+  "fonte": "Fato Paulista",
+  "fonteUrl": "https://fatopaulista.com.br",
+  "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOVW9RT3pxQ3puXzY5cnRKOHRHaDVGSDFCZGR0R3d5SUxsT05VVTVORXNtUmw4endMcmUxZlcxM09VTVZpb3duM3d2RzdQQUJZdDljQ3RIVEM1MWVSS0trc0xTMkFhaXM4Ql93SXJ5LWR5eHBsaWFnX0wwVkVRVjF2emxB?oc=5",
+  "publicado": "2026-11-27T14:37:33+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "Avenida Paulista evento 2027",
+  "detectadoEm": "2026-11-27T14:51:17.317134+00:00",
+  "anuncio": true,
+  "enviado": true
  }
 ]
