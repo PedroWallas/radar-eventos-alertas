@@ -17017,5 +17017,33 @@
    "tipo": ""
   },
   "enviado": true
+ },
+ {
+  "id": "menos calor e mais chuva veja previsao do tempo em sp para o fim de semana",
+  "titulo": "Menos calor e mais chuva: veja previsão do tempo em SP para o fim de semana",
+  "fonte": "Metrópoles",
+  "fonteUrl": "https://www.metropoles.com",
+  "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQdVNwbmJfN0ZFTWpmRGNtX2tRYVYtOUFMdGF1ZENuTkFYay0wcWxMN0tLcHFEUHJXMVNnTHprQjhVcFhBWHd1eUJ4amtGNGN0bmxsc1pHZ1FXb1dGOHBtSGNhVjhYZ29iaTN1anhHZXFTZlI1RnBpN2VpLXJCZVVReS1McVhnMzBQU2ZaaTE4bmEtQVg3RmNnblppMlhHanNGeTBOdUNXTUJGYmF5LWZUQg?oc=5",
+  "publicado": "2026-11-27T17:27:00+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "⚠️ Ruptura em SP",
+  "busca": "enchente alagamento São Paulo",
+  "detectadoEm": "2026-11-27T19:50:53.435486+00:00",
+  "tipoAlerta": "ruptura",
+  "linkReal": "https://www.metropoles.com/sao-paulo/menos-calor-e-mais-chuva-veja-previsao-do-tempo-em-sp-para-o-fim-de-semana",
+  "enviado": true
+ },
+ {
+  "id": "vila historica perto de sao paulo tera festival medieval com duelos arquearia e ",
+  "titulo": "Vila histórica perto de São Paulo terá festival medieval com duelos, arquearia e música",
+  "fonte": "Viagem e Turismo",
+  "fonteUrl": "https://viagemeturismo.abril.com.br",
+  "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQWXYwcWd1SzRyQzA4TUxlNGJPQU5kY3R6bzBxZmFHaTl0Z2UzcHZVME1WUTRObkxjaHZKVzFPRGVHb0lZMjI0SU1DUUtQOG5oTDVMbG5WWHU0ZlpqUDNEN1FSRlRTTVFxX2c5N2lMMURKNmFIby1GZmFRdHJsaDRlTFFjYnhNajVNZkY2QlA5UEh2VW9wcVQyZkE5V3JZczd3WjJONmItbmx0NlF5b1V1eEdWRF83a3Q0anUyenBDRnJKRnFRV1hxOGJ3?oc=5",
+  "publicado": "2026-11-27T19:20:00+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "agências de viagem evento São Paulo",
+  "detectadoEm": "2026-11-27T19:51:10.979510+00:00",
+  "enviado": true
  }
 ]
