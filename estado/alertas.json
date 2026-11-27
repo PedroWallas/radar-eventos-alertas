@@ -16984,5 +16984,38 @@
    "tipo": ""
   },
   "enviado": true
+ },
+ {
+  "id": "tira duvidas sandy e junior ingressos para shows em sp custam a partir de r 175 ",
+  "titulo": "Tira-dúvidas Sandy e Junior: ingressos para shows em SP custam a partir de R$ 175; veja como comprar",
+  "fonte": "Banda B",
+  "fonteUrl": "https://www.bandab.com.br",
+  "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPeFdJcVMwSWhEeDJ5aXFfYkRJT0VpaFo2OF8xcTVjekItWXRkNGI5cnNiT1pUTHphbjRlNlpPZzgweXFaNmVkWWs3RVZiOWJ4RjZEcmp6WU8zX2ctLVpWM2tLeHVlMWdFVE1KdzMybDJuX2JmUHhGYk1WNDVwZWQ2emJrWWRsNERSYWFCOVd4SHJRT0hzUUtZcDhBY3luTGFQbk40VXZnS2dCX2VKTll2bWRUNGJ0MU1Q?oc=5",
+  "publicado": "2026-11-27T17:28:00+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "Registro (sem aviso)",
+  "busca": "ingressos à venda show São Paulo",
+  "detectadoEm": "2026-11-27T19:01:13.643267+00:00",
+  "anuncio": true,
+  "enviado": true
+ },
+ {
+  "id": "fonte:saopauloexpo|feira plastico brasil 2027|2027-03-15",
+  "titulo": "São Paulo Expo: FEIRA PLÁSTICO BRASIL 2027",
+  "fonte": "São Paulo Expo",
+  "link": "https://www.saopauloexpo.com.br/pt/evento-spe/feira-plastico-brasil-2027/?occurrence=2027-03-15",
+  "publicado": "2026-11-27T19:01:28.521707+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: saopauloexpo",
+  "detectadoEm": "2026-11-27T19:01:28.521707+00:00",
+  "evento": {
+   "nome": "FEIRA PLÁSTICO BRASIL 2027",
+   "inicio": "2027-03-15",
+   "fim": "2027-03-19",
+   "local": "São Paulo Expo · Pavilhões 1 a 6",
+   "tipo": ""
+  },
+  "enviado": true
  }
 ]
