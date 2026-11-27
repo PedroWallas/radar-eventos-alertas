@@ -16965,5 +16965,24 @@
    "tipo": ""
   },
   "enviado": true
+ },
+ {
+  "id": "fonte:saopauloexpo|haus decor show 2027|2027-02-22",
+  "titulo": "São Paulo Expo: HAUS DECOR SHOW 2027",
+  "fonte": "São Paulo Expo",
+  "link": "https://www.saopauloexpo.com.br/pt/evento-spe/haus-decor-show-2027/?occurrence=2027-02-22",
+  "publicado": "2026-11-27T18:51:32.452763+00:00",
+  "prioridade": "FONTE",
+  "rotulo": "🆕 Nova data em fonte oficial",
+  "busca": "fonte oficial: saopauloexpo",
+  "detectadoEm": "2026-11-27T18:51:32.452763+00:00",
+  "evento": {
+   "nome": "HAUS DECOR SHOW 2027",
+   "inicio": "2027-02-22",
+   "fim": "2027-02-26",
+   "local": "São Paulo Expo · Pavilhões 7 e 8",
+   "tipo": ""
+  },
+  "enviado": true
  }
 ]
