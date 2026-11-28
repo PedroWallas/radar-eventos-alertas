@@ -17233,5 +17233,19 @@
   "busca": "enchente alagamento São Paulo",
   "detectadoEm": "2026-11-28T09:30:50.161618+00:00",
   "enviado": true
+ },
+ {
+  "id": "atibaia no interior de sp registra ruas tomadas pela agua apos temporal",
+  "titulo": "Atibaia, no interior de SP, registra ruas tomadas pela água após temporal.",
+  "fonte": "Metrópoles",
+  "fonteUrl": "https://www.metropoles.com",
+  "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNcjJueUJSb3VZQXlSUGZGXzc2SzV6aWk0LWxxckdUaXNkZFFXOXBaNEFuZ1YyWXA0OEkteW56UTFvQmh6Yl9vXzU5TzF2N0R1M3hwY3FlTVcyU3NnVFY5dlpvdWNhd0pBVnF1QlJwX1ZCLTFrdXJIcEQ5Y1VJOGNuM3V4RjFNVnNhaHlhMk5RR2tDRW52NjFSdjFDeTNrY0JKNXZKNVhuZDRiSWZs?oc=5",
+  "publicado": "2026-11-26T18:43:00+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "⚠️ Ruptura em SP",
+  "busca": "enchente alagamento São Paulo",
+  "detectadoEm": "2026-11-28T11:00:48.319993+00:00",
+  "tipoAlerta": "ruptura",
+  "enviado": true
  }
 ]
