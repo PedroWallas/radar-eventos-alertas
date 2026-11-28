@@ -17260,5 +17260,20 @@
   "busca": "show gratuito Avenida Paulista",
   "detectadoEm": "2026-11-28T13:00:34.869508+00:00",
   "enviado": true
+ },
+ {
+  "id": "queda de energia causa paralisacao na linha 17 ouro do metro em sao paulo",
+  "titulo": "Queda de energia causa paralisação na Linha-17 Ouro do Metrô em São Paulo",
+  "fonte": "CNN Brasil",
+  "fonteUrl": "https://www.cnnbrasil.com.br",
+  "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNS1R3Rk5LQ05CamxkSmo1eHVQNzd4WVBmQVFUM1RHUV9VZ3NvOU11NmRXQi1ZdU92TkNMdDEtNl9sV093V1htZ1k1bjR2cG1fNjg5ZHpEaUxjNG5Ca0k1aW14eERTTEh3LU4wc1l3NkUzaWcxeGVmVjhjZ2RuVXZZMkVoWEY0Q05uenZMbnl2N2ZfeGJpU1BPRzZORUlCOHJ1X2NtUWdvNDRrTWRVOHNfLXEtM1Y2OUMxRHpaWVppaVU?oc=5",
+  "publicado": "2026-11-28T13:56:01+00:00",
+  "prioridade": "REGISTRO",
+  "rotulo": "⚠️ Ruptura em SP",
+  "busca": "apagão falta de energia São Paulo",
+  "detectadoEm": "2026-11-28T14:10:49.689370+00:00",
+  "tipoAlerta": "ruptura",
+  "linkReal": "https://www.cnnbrasil.com.br/nacional/sudeste/sp/queda-de-energia-causa-paralisacao-na-linha-17-ouro-do-metro-em-sao-paulo/",
+  "enviado": true
  }
 ]
